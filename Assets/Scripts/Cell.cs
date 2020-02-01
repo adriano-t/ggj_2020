@@ -35,7 +35,7 @@ public class Cell : MonoBehaviour
 
             if (this.currentEvent.isOver())
             {
-                this.currentEvent == null;
+                this.currentEvent = null;
             }
         }
     }
