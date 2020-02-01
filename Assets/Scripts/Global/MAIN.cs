@@ -12,6 +12,7 @@ static public class MAIN
         if (player == null) player = GameObject.FindWithTag("player").GetComponent<Player>();
         return player;
     }
+    
     static public GlobalController GetGlobal() {
         if (global == null) global = GameObject.FindWithTag("global").GetComponent<GlobalController>();
         return global;
