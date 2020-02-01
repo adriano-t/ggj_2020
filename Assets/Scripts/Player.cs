@@ -33,22 +33,37 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
+        #region Movement/Aim
         Vector2 inputs = new Vector2(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
-        //transform.rotation = Quaternion.Euler(MAIN.GetDir(transform.position, planet.GetCenter()));
-        //Quaternion targetRotation = Quaternion.LookRotation(planet.GetCenter() - transform.position);
         direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
-
-        //Rotation(inputs.x * rotationVelocity);
+        
         Position(inputs.x *velocity * Time.deltaTime, inputs.y * velocity * Time.deltaTime);
 
         transform.position = rotation * Vector3.forward * planet.GetRadius();
 		transform.rotation = Quaternion.Lerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
-        
-        float angleY = Mathf.Atan2(Input.GetAxisRaw("HorizontalAim"), Input.GetAxisRaw("VerticalAim")) *Mathf.Rad2Deg;
-        
-        transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, angleY+offset, 0);
-        
+
+        float horizontalAim = Input.GetAxisRaw("HorizontalAim");
+        float verticalAim = Input.GetAxisRaw("VerticalAim");
+
+        if (Mathf.Abs(horizontalAim) >= 0.05 || Mathf.Abs(verticalAim) >= 0.05)
+        {
+            float angleY = Mathf.Atan2(horizontalAim, verticalAim) * Mathf.Rad2Deg;
+            Quaternion localRotation = transform.GetChild(0).transform.localRotation;
+            transform.GetChild(0).transform.localRotation = Quaternion.Lerp(localRotation, Quaternion.Euler(0, angleY + offset, 0), Time.deltaTime*rotationVelocity*0.5f);
+        }
+        #endregion
+
+        //TODO Implementare cambio arma
+        if(Input.GetButtonDown("ChangeWeaponLeft"))
+        {
+        }
+        if(Input.GetButtonDown("ChangeWeaponLeft"))
+        {
+        }
+
+        if(Input.GetAxis("Fire")>0.1)
+        {
+        }
     }
 
     void Position(float x, float y) {
