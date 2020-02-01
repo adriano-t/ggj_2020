@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float rotationVelocity;
 
 	[Header("Prefabs and Objects")]
-	 public WeaponHUD weaponHUD;
+	public WeaponHUD weaponHUD;
 	public Animator anim;
     public GameObject cameraObj;
 	public Weapon weapon;

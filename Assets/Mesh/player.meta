@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Mesh/Player.meta
 guid: 0a24d9ec0407fda4882b95829482b60b
 folderAsset: yes
+=======
+guid: 36722a38c399976449d143228de7e9f4
+>>>>>>> d96686a69c202f771e9946481816ee44c3c25739:Assets/Scenes/PauseMenu.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
