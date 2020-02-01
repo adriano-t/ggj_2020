@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [Header("Player Settings")]
     public float height;
     public float velocity;
+    public float offset;
     public float rotationVelocity;
 
     [Header("Prefabs and Objects")]
@@ -38,12 +39,16 @@ public class Player : MonoBehaviour
         //Quaternion targetRotation = Quaternion.LookRotation(planet.GetCenter() - transform.position);
         direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
 
-        Rotation(inputs.x * rotationVelocity);
-        Position(0, inputs.y * velocity * Time.deltaTime);
+        //Rotation(inputs.x * rotationVelocity);
+        Position(inputs.x *velocity * Time.deltaTime, inputs.y * velocity * Time.deltaTime);
 
         transform.position = rotation * Vector3.forward * planet.GetRadius();
 		transform.rotation = Quaternion.Lerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
-    
+        
+        float angleY = Mathf.Atan2(Input.GetAxisRaw("HorizontalAim"), Input.GetAxisRaw("VerticalAim")) *Mathf.Rad2Deg;
+        
+        transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, angleY+offset, 0);
+        
     }
 
     void Position(float x, float y) {
