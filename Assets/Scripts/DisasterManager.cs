@@ -9,21 +9,20 @@ public class DisasterManager : MonoBehaviour
     public float spawnTimeRange = 10;
     public GameObject[] prefabsDisaster;
     public Planet planet;
-    public float stormSpawnHeight = 2;
     void Start()
     {
-        
+        StartCoroutine(RoutineDisaster());
     }
 
     IEnumerator RoutineDisaster ()
     {
-        while (true)
+        //while (true)
         {
-            var obj = prefabsDisaster[Random.Range(0, prefabsDisaster.Length)];
+            var obj = Instantiate(prefabsDisaster[Random.Range(0, prefabsDisaster.Length)]); 
             //var disaster = obj.GetComponent<Disaster>();
-            Vector3 point = Random.onUnitSphere * (planet.GetRadius() + stormSpawnHeight);
+            Vector3 point = Random.onUnitSphere * (planet.GetRadius());
             obj.transform.position = point;
-            obj.transform.forward = planet.transform.position - point;
+            obj.transform.up = (point - planet.transform.position).normalized;
             yield return new WaitForSeconds(spawnTime + Random.Range(-spawnTimeRange, spawnTimeRange));
         }
     }

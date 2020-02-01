@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour {
 	private float temperature;
 	private float waterLevel;
-
+	private List<Cell> neighbors = new List<Cell>();
 	private CellEvent currentEvent;
 
 	public float Temperature {
@@ -20,14 +21,20 @@ public class Cell : MonoBehaviour {
 	}
 
 	void Start() {
-		GameObject coll = new GameObject("coll");
-		coll.transform.position = transform.position;
-		CapsuleCollider c = coll.AddComponent<CapsuleCollider>();
+		GameObject obj = new GameObject("coll");
+		obj.transform.position = transform.position;
+		CapsuleCollider c = obj.AddComponent<CapsuleCollider>();
 		c.radius = 3;
 		c.height = 15;
 		c.isTrigger = true;
-		MAIN.Orient(coll.transform);
-		coll.transform.SetParent(transform);
+		MAIN.Orient(obj.transform);
+		obj.transform.SetParent(transform);
+
+		Collider[] colliders = Physics.OverlapSphere(transform.position, 2 * c.radius);
+		foreach (var coll in colliders)
+			if (coll != c)
+				neighbors.Add(coll.GetComponentInParent<Cell>());
+
 	}
 
 	void Update() {
@@ -35,14 +42,30 @@ public class Cell : MonoBehaviour {
 			this.currentEvent.Update();
 
 			if (this.currentEvent.isOver()) {
+				this.currentEvent.OnEnd();
 				this.currentEvent = null;
 			}
 		}
+	}
+
+	internal List<Cell> GetNeighbors ()
+	{
+		return neighbors;
 	}
 
 	public void SetCellEvent(CellEvent cellEvent) {
 		this.currentEvent = cellEvent;
 		this.currentEvent.Start();
 	}
+
+	public void Hit(int weaponIndex)
+	{
+		switch (weaponIndex)
+		{
+			default:
+				break;
+		}
+	}
+	 
 
 }
