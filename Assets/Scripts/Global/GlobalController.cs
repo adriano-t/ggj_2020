@@ -10,9 +10,14 @@ public class GlobalController : MonoBehaviour
 
 	[Header("Planet Prefabs")]
 	public GameObject prefabForest;
+
+	[Header("Sounds")]
+	public Sound[] sounds;
     
 
     Planet activePlanet;
+
+
 
 
     void Start() {
@@ -57,6 +62,9 @@ public class GlobalController : MonoBehaviour
 
 	}
 
+	public void DestroyThis(GameObject obj, float delay) {
+		Destroy(obj, delay);
+	}
 
     public Planet GetActivePlanet() {
 		if (activePlanet == null) activePlanet = GameObject.FindWithTag("world").GetComponent<Planet>();

@@ -20,7 +20,16 @@ static public class MAIN
 
 
 
-
+	static public AudioSource SoundPlay(Sound[] sounds, string soundName, Vector3 position) {
+		foreach (Sound s in sounds) {
+			if (s.soundName == soundName) {
+				AudioSource source = s.Play();
+				if (!source.loop) MAIN.GetGlobal().DestroyThis(source.gameObject, source.clip.length + 0.1f);
+				return source;
+			}
+		}
+		return null;
+	}
 
 	static public Vector3 GetDir(Vector3 from, Vector3 to) {
 		return (to - from).normalized;
