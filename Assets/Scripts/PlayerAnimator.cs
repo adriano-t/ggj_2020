@@ -11,6 +11,7 @@ public class PlayerAnimator : MonoBehaviour
 
 	public void Shoot() {
 		MAIN.GetPlayer().Shoot();
+		Invoke("ShootAnimEnd", 0.2f);
 	}
 
 	public void ShootAnimEnd() {

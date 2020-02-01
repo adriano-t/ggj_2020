@@ -21,9 +21,6 @@ public class GlobalController : MonoBehaviour
 
 
     void Start() {
-        // questo player viene duplicato per il respawn in LoadMap
-        playerObj.SetActive(false); 
-
         LoadMap();
     }
 

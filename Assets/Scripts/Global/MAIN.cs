@@ -38,7 +38,7 @@ static public class MAIN
 		Planet p = global.GetActivePlanet();
 		Ray ray = new Ray(p.GetCenter(), MAIN.GetDir(p.GetCenter(), t.position));
 
-		t.up = MAIN.GetDir(t.position, p.GetCenter());
+		t.up = -MAIN.GetDir(t.position, p.GetCenter());
 
 		Vector3 position = ray.GetPoint(p.GetRadius());
 		t.position = position;

@@ -20,7 +20,14 @@ public class Cell : MonoBehaviour {
 	}
 
 	void Start() {
-
+		GameObject coll = new GameObject("coll");
+		coll.transform.position = transform.position;
+		CapsuleCollider c = coll.AddComponent<CapsuleCollider>();
+		c.radius = 3;
+		c.height = 15;
+		c.isTrigger = true;
+		MAIN.Orient(coll.transform);
+		coll.transform.SetParent(transform);
 	}
 
 	void Update() {
