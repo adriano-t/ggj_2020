@@ -21,6 +21,7 @@
           <e p="OptionsMenu.cs" t="Include" />
           <e p="Planet.cs" t="Include" />
           <e p="Player.cs" t="Include" />
+          <e p="PlayerAnimator.cs" t="Include" />
           <e p="TestGeneration.cs" t="Include" />
           <e p="Weapon.cs" t="Include" />
           <e p="WeaponHUD.cs" t="Include" />
