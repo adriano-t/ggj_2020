@@ -64,7 +64,14 @@ public class GlobalController : MonoBehaviour
 	}
 
     public Planet GetActivePlanet() {
-		if (activePlanet == null) activePlanet = GameObject.FindWithTag("world").GetComponent<Planet>();
+		if (activePlanet == null)
+		{
+			var go = GameObject.FindWithTag("world");
+			if (go == null)
+				Debug.LogError("sgocciola");
+
+			activePlanet = go.GetComponent<Planet>();
+		}
         return activePlanet;
     }
 
