@@ -6,6 +6,7 @@ public class GlobalController : MonoBehaviour
 {
 	[Header("Global Prefabs")]
     public GameObject playerObj;
+	public Materials materials;
     public int currentLevel = 0;
 
 	[Header("Planet Prefabs")]
@@ -17,6 +18,13 @@ public class GlobalController : MonoBehaviour
 
     Planet activePlanet;
 
+
+	[System.Serializable]
+	public struct Materials {
+		public Material grass;
+		public Material ice;
+		public Material desert;
+	}
 
 
 

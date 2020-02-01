@@ -60,6 +60,7 @@ public class Cell : MonoBehaviour {
 
 	public void Hit(int weaponIndex)
 	{
+		// cambiare materiale cella (array MAIN.GetGlobal().materials.xxx)
 		switch (weaponIndex)
 		{
 			default:
