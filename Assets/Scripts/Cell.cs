@@ -38,4 +38,9 @@ public class Cell : MonoBehaviour {
 		this.currentEvent.Start();
 	}
 
+	public void Hit(string weaponName)
+	{
+
+	}
+
 }
