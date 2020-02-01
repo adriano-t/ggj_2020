@@ -23,6 +23,9 @@ public class Sound
 		source.clip = clips[Random.Range(0, clips.Length)];
 		source.spatialBlend = (sound3D ? 1 : 0);
 
+		source.volume = volume;
+		source.pitch = pitch;
+
 		source.loop = loop;
 		source.Play();
 
