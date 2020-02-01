@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Player Settings")]
-    public float height;
+    [Header("Player Settings")] public float height;
     public float velocity;
     public float offset;
     public float rotationVelocity;
 
 	[Header("Prefabs and Objects")]
+	 public WeaponHUD weaponHUD;
 	public Animator anim;
     public GameObject cameraObj;
 	public Weapon weapon;
+
 
 	float angle = 90;
     Vector3 direction;
@@ -23,9 +24,8 @@ public class Player : MonoBehaviour
 	CameraController camController;
     Planet planet;
 
-
-    void Start() {
-		
+    void Start() 
+    {
         // la creazione del player avviene nel GlobalController
         cam = cameraObj.GetComponent<Camera>();
         global = MAIN.GetGlobal();
@@ -78,14 +78,16 @@ public class Player : MonoBehaviour
 		
 
         //TODO Implementare cambio arma
-
         if(Input.GetButtonDown("ChangeWeaponLeft"))
         {
             weapon.GetPreviousWeapon();
+            weaponHUD.SetWeapon(weapon.selectedWeapon);
         }
-        if(Input.GetButtonDown("ChangeWeaponLeft"))
+
+        if (Input.GetButtonDown("ChangeWeaponLeft"))
         {
 			weapon.GetNextWeapon();
+			weaponHUD.SetWeapon(weapon.selectedWeapon);
         }
 
         if(Input.GetAxisRaw("Fire") == 1)
@@ -93,34 +95,33 @@ public class Player : MonoBehaviour
 			anim.SetBool("shoot", true);
         }
 
-        if(Input.GetButtonUp("Pause"))
+      /*  if (Input.GetButtonUp("Pause"))
         {
             //TODO Mostrare menù di pausa
-        }
+        }*/
 
-		
+
     }
 
 	public void Shoot() {
 		weapon.Shoot();
 	}
 
-    void Position(float x, float y) {
-		Vector2 perpendicular = new Vector2(-direction.y, direction.x);
-		Quaternion vRot = Quaternion.AngleAxis(y, perpendicular);
-		Quaternion hRot = Quaternion.AngleAxis(x, direction);
-		rotation *= hRot * vRot;
+    void Position(float x, float y)
+    {
+        Vector2 perpendicular = new Vector2(-direction.y, direction.x);
+        Quaternion vRot = Quaternion.AngleAxis(y, perpendicular);
+        Quaternion hRot = Quaternion.AngleAxis(x, direction);
+        rotation *= hRot * vRot;
     }
-    void Rotation(float amt) {
-		angle += amt * Mathf.Deg2Rad * Time.deltaTime;
-	}
 
+    void Rotation(float amt)
+    {
+        angle += amt * Mathf.Deg2Rad * Time.deltaTime;
+    }
 
-	
-
-    public Camera GetCamera() {
+    public Camera GetCamera()
+    {
         return cam;
     }
-
-
 }
