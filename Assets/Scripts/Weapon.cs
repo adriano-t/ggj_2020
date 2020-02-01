@@ -52,7 +52,7 @@ public class Weapon : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(rayn);
         foreach (RaycastHit hit in hits)
         {
-            Cell cell = hit.collider.GetComponent<Cell>();
+            Cell cell = hit.collider.transform.parent.GetComponent<Cell>();
             if (cell)
             {
 
