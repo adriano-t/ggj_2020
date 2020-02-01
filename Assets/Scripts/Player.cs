@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         // la creazione del player avviene nel GlobalController
         cam = cameraObj.GetComponent<Camera>();
         global = MAIN.GetGlobal();
-        planet = global.GetActivePlanet();
+        planet = global.GetActivePlanet(); 
 
 		camController = cam.GetComponent<CameraController>();
         cameraObj.transform.SetParent(null);
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
 		Vector2 inputs = new Vector2(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
 
-
+		
 		if (camController.cameraBehind) {
 
 			Rotation(inputs.x * rotationVelocity);
@@ -78,16 +78,24 @@ public class Player : MonoBehaviour
 		
 
         //TODO Implementare cambio arma
+
         if(Input.GetButtonDown("ChangeWeaponLeft"))
         {
+            weapon.GetPreviousWeapon();
         }
         if(Input.GetButtonDown("ChangeWeaponLeft"))
         {
+			weapon.GetNextWeapon();
         }
 
         if(Input.GetAxisRaw("Fire") == 1)
         {
 			anim.SetBool("shoot", true);
+        }
+
+        if(Input.GetButtonUp("Pause"))
+        {
+            //TODO Mostrare menù di pausa
         }
 
 		
