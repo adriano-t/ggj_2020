@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 { 
+	[System.Serializable]
     public struct StructWeapon
     {
         public ParticleSystem particles;
@@ -54,7 +55,7 @@ public class Weapon : MonoBehaviour
             Cell cell = hit.collider.GetComponent<Cell>();
             if (cell)
             {
-                cell.
+                //cell.
             }
         }
 
