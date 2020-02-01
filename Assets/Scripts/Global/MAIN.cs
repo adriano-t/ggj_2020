@@ -25,6 +25,26 @@ static public class MAIN
 	static public Vector3 GetDir(Vector3 from, Vector3 to) {
 		return (to - from).normalized;
 	}
+	static public void Orient(Transform t) {
+		Planet p = global.GetActivePlanet();
+		Ray ray = new Ray(p.GetCenter(), MAIN.GetDir(p.GetCenter(), t.position));
 
+		t.up = MAIN.GetDir(t.position, p.GetCenter());
+
+		Vector3 position = ray.GetPoint(p.GetRadius());
+		t.position = position;
+	}
+
+	static public void Shuffle<T>(IList<T> list, int seed) {
+		if (seed > 0) Random.InitState(seed);
+
+		for (var i = 0; i < list.Count; i++)
+			Swap(list, i, Random.Range(i, list.Count));
+	}
+	static public void Swap<T>(IList<T> list, int i, int j) {
+		var temp = list[i];
+		list[i] = list[j];
+		list[j] = temp;
+	}
 
 }
