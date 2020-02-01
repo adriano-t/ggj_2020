@@ -64,7 +64,10 @@ public class Player : MonoBehaviour
         if(Input.GetAxis("Fire")>0.1)
         {
         }
+
+		
     }
+
 
     void Position(float x, float y) {
 		Vector2 perpendicular = new Vector2(-direction.y, direction.x);
@@ -76,6 +79,10 @@ public class Player : MonoBehaviour
 		angle += amt * Mathf.Deg2Rad * Time.deltaTime;
 	}
 
+
+	public void Step() {
+		MAIN.SoundPlay(global.sounds, "steps", transform.position);
+	}
 
     public Camera GetCamera() {
         return cam;
