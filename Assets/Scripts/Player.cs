@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public float rotationVelocity;
 
 	[Header("Prefabs and Objects")]
-	public WeaponHUD weaponHUD;
 	public Animator anim;
     public GameObject cameraObj;
 	public Weapon weapon;
@@ -81,13 +80,13 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("ChangeWeaponLeft"))
         {
             weapon.GetPreviousWeapon();
-            weaponHUD.SetWeapon(weapon.selectedWeapon);
+            global.SetWeapon(weapon.selectedWeapon);
         }
 
         if (Input.GetButtonDown("ChangeWeaponLeft"))
         {
 			weapon.GetNextWeapon();
-			weaponHUD.SetWeapon(weapon.selectedWeapon);
+			global.SetWeapon(weapon.selectedWeapon);
         }
 
         if(Input.GetAxisRaw("Fire") == 1)

@@ -716,7 +716,8 @@ MonoBehaviour:
   offset: -90
   rotationVelocity: 180
   weaponHUD:
-    weaponHUDComponents: []
+    weaponHUDComponents:
+    - {fileID: 0}
     weaponImages: []
   anim: {fileID: 6629385726310527850}
   cameraObj: {fileID: 7377377177644096345}

@@ -9,7 +9,10 @@
         <e p="Scripts" t="Include">
           <e p="CameraController.cs" t="Include" />
           <e p="Cell.cs" t="Include" />
-          <e p="CellEvent.cs" t="Include" />
+          <e p="CellEvents" t="Include">
+            <e p="CellEvent.cs" t="Include" />
+            <e p="CellEventFire.cs" t="Include" />
+          </e>
           <e p="Disaster.cs" t="Include" />
           <e p="DisasterManager.cs" t="Include" />
           <e p="Global" t="Include">
@@ -18,7 +21,9 @@
             <e p="Sound.cs" t="Include" />
           </e>
           <e p="MainMenu.cs" t="Include" />
+          <e p="MenuPlanetRotation.cs" t="Include" />
           <e p="OptionsMenu.cs" t="Include" />
+          <e p="PauseMenu.cs" t="Include" />
           <e p="Planet.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="PlayerAnimator.cs" t="Include" />

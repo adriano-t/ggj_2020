@@ -1,59 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GlobalController : MonoBehaviour
 {
-	[Header("Global Prefabs")]
-    public GameObject playerObj;
+	[Header("Global Prefabs")] public GameObject playerObj;
 	public Materials materials;
-    public int currentLevel = 0;
+	[FormerlySerializedAs("Weapon HUD")] public WeaponHUD weaponHud;
+	public int currentLevel = 0;
+	
 
-	[Header("Planet Prefabs")]
-	public GameObject prefabForest;
+	[Header("Planet Prefabs")] public GameObject prefabForest;
 
-	[Header("Sounds")]
-	public Sound[] sounds;
-    
+	[Header("Sounds")] public Sound[] sounds;
 
-    Planet activePlanet;
+
+	Planet activePlanet;
 
 
 	[System.Serializable]
-	public struct Materials {
+	public struct Materials
+	{
 		public Material grass;
 		public Material ice;
 		public Material desert;
 	}
 
+	void Start()
+	{
+		LoadMap();
+	}
 
-
-    void Start() {
-        LoadMap();
-    }
-
-
-
-    // carica un nuovo livello inizializzandolo
-    public void LoadMap() {
+	// carica un nuovo livello inizializzandolo
+	public void LoadMap()
+	{
 		GameObject[] planets = GameObject.FindGameObjectsWithTag("world");
 
-		foreach (GameObject o in planets) {
-            o.SetActive(false);
-        }
+		foreach (GameObject o in planets)
+		{
+			o.SetActive(false);
+		}
 
-        activePlanet = planets[currentLevel].GetComponent<Planet>();
-        activePlanet.gameObject.SetActive(true);
+		activePlanet = planets[currentLevel].GetComponent<Planet>();
+		activePlanet.gameObject.SetActive(true);
 		activePlanet.GenerateSurface();
 
-        GameObject player = Instantiate(playerObj, activePlanet.GetCenter() + Vector3.up * activePlanet.GetRadius(), Quaternion.identity);
-        player.SetActive(true);
-    }
-	
-	public void LoadNextLevel() {
+		GameObject player = Instantiate(playerObj, activePlanet.GetCenter() + Vector3.up * activePlanet.GetRadius(),
+			Quaternion.identity);
+		player.SetActive(true);
+	}
+
+	public void LoadNextLevel()
+	{
 		StartCoroutine(LoadNextLevelRoutine());
 	}
-	IEnumerator LoadNextLevelRoutine() {
+
+	IEnumerator LoadNextLevelRoutine()
+	{
 
 		// fade out
 
@@ -67,11 +71,13 @@ public class GlobalController : MonoBehaviour
 
 	}
 
-	public void DestroyThis(GameObject obj, float delay) {
+	public void DestroyThis(GameObject obj, float delay)
+	{
 		Destroy(obj, delay);
 	}
 
-    public Planet GetActivePlanet() {
+	public Planet GetActivePlanet()
+	{
 		if (activePlanet == null)
 		{
 			var go = GameObject.FindWithTag("world");
@@ -80,7 +86,12 @@ public class GlobalController : MonoBehaviour
 
 			activePlanet = go.GetComponent<Planet>();
 		}
-        return activePlanet;
-    }
 
+		return activePlanet;
+	}
+
+	public void SetWeapon(int weaponSelectedWeapon)
+	{
+		this.weaponHud.SetWeapon(weaponSelectedWeapon);
+	}
 }
