@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
             Cell cell = hit.collider.GetComponent<Cell>();
             if (cell)
             {
-                //cell.
+
             }
         }
 
