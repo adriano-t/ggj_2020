@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float velocity;
     public float offset;
     public float rotationVelocity;
+    public Weapon currentWeapon;
 
     [Header("Prefabs and Objects")]
     public GameObject cameraObj;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         cam = cameraObj.GetComponent<Camera>();
         global = MAIN.GetGlobal();
         planet = global.GetActivePlanet();
+        currentWeapon = GetComponent<Weapon>();
 
         cameraObj.transform.SetParent(null);
     }
@@ -52,17 +54,24 @@ public class Player : MonoBehaviour
             transform.GetChild(0).transform.localRotation = Quaternion.Lerp(localRotation, Quaternion.Euler(0, angleY + offset, 0), Time.deltaTime*rotationVelocity*0.5f);
         }
         #endregion
-
-        //TODO Implementare cambio arma
+        
         if(Input.GetButtonDown("ChangeWeaponLeft"))
         {
+            currentWeapon.GetPreviousWeapon();
         }
         if(Input.GetButtonDown("ChangeWeaponLeft"))
         {
+            currentWeapon.GetNextWeapon();
         }
 
         if(Input.GetAxis("Fire")>0.1)
         {
+            currentWeapon.Shoot();
+        }
+
+        if(Input.GetButtonUp("Pause"))
+        {
+            //TODO Mostrare menù di pausa
         }
     }
 

@@ -20,11 +20,23 @@ public class Weapon : MonoBehaviour
             if (i != selectedWeapon)
                 transform.GetChild(i).gameObject.SetActive(false);
     }
-
-    public void SelectWeapon(int weaponIndex)
+    
+    public void GetNextWeapon()
     {
-        selectedWeapon = weaponIndex;
-        RefreshWeapon();
+        if (selectedWeapon + 1 < weapons.Length)
+        {
+            selectedWeapon += 1;
+            RefreshWeapon();
+        }
+    }
+
+    public void GetPreviousWeapon()
+    {
+        if (selectedWeapon - 1 >= 0)
+        {
+            selectedWeapon -= 1;
+            RefreshWeapon();
+        }
     }
 
     public void Shoot ()
