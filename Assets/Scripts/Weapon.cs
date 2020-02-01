@@ -44,8 +44,22 @@ public class Weapon : MonoBehaviour
     public void Shoot ()
     {
         weapons[selectedWeapon].particles.Play();
-        var colliders = Physics.OverlapCapsule(transform.position, transform.position + transform.forward * weaponRange, 0.5f);
 
+        Ray rayf = new Ray(transform.position, MAIN.GetPlayer().transform.forward);
+        Ray rayn = new Ray(MAIN.GetGlobal().GetActivePlanet().GetCenter(), rayf.GetPoint(weaponRange));
+
+        RaycastHit[] hits = Physics.RaycastAll(rayn);
+        foreach (RaycastHit hit in hits)
+        {
+            Cell cell = hit.collider.GetComponent<Cell>();
+            if (cell)
+            {
+                cell.
+            }
+        }
+
+        //var hits = Physics.OverlapSphere(transform.position + transform.forward, 2);
+        
         Debug.DrawLine(transform.position, transform.position + transform.forward * weaponRange, Color.red, 10.0f);
     }
 }
