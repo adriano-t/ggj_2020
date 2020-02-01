@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform following;
+	public bool cameraBehind = false;
 
     [Header("Settings")]
     public Vector3 offset;
