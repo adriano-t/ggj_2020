@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 { 
+	[System.Serializable]
     public struct StructWeapon
     {
         public ParticleSystem particles;
@@ -51,10 +52,10 @@ public class Weapon : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(rayn);
         foreach (RaycastHit hit in hits)
         {
-            Cell cell = hit.collider.GetComponent<Cell>();
+            Cell cell = hit.collider.transform.parent.GetComponent<Cell>();
             if (cell)
-            {
-                cell.Hit(weapons[selectedWeapon].obj.name);
+            { 
+                cell.Hit(selectedWeapon); 
             }
         }
 
