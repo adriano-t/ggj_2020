@@ -16,7 +16,6 @@ public class PlayerAnimator : MonoBehaviour
 
 	public void ShootAnimEndTimer ()
 	{
-		Debug.LogError("invoked");
 		MAIN.GetPlayer().anim.SetBool("shoot", false);
 	}
 	public void ShootAnimEnd() {

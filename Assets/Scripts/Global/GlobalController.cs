@@ -89,9 +89,5 @@ public class GlobalController : MonoBehaviour
 
 		return activePlanet;
 	}
-
-	public void SetWeapon(int weaponSelectedWeapon)
-	{
-		this.weaponHud.SetWeapon(weaponSelectedWeapon);
-	}
+	 
 }

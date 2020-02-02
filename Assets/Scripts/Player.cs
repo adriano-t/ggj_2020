@@ -79,14 +79,15 @@ public class Player : MonoBehaviour
         //TODO Implementare cambio arma
         if(Input.GetButtonDown("ChangeWeaponLeft"))
         {
-            weapon.GetPreviousWeapon();
-            global.SetWeapon(weapon.selectedWeapon);
+            Debug.LogWarning("LEFT");
+            weapon.GetPreviousWeapon(); 
         }
 
-        if (Input.GetButtonDown("ChangeWeaponLeft"))
+        if (Input.GetButtonDown("ChangeWeaponRight"))
         {
-			weapon.GetNextWeapon();
-			global.SetWeapon(weapon.selectedWeapon);
+            Debug.LogWarning("RIGHT");
+            weapon.GetNextWeapon();
+
         }
 
         if(Input.GetAxisRaw("Fire") > 0.5f && !anim.GetBool("shoot"))

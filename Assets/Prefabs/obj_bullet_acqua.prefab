@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8061221329991207566}
   - component: {fileID: 4864727379065495951}
   m_Layer: 0
-  m_Name: obj_bullet_fire
+  m_Name: obj_bullet_acqua
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da2b13a93b194e54bb2589a314129cf0, type: 2}
+  - {fileID: 2100000, guid: 59d132927c1997845a08297b2d3501ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
