@@ -84,6 +84,11 @@ public class Weapon : MonoBehaviour
 
         target.Hit(selectedWeapon);
 
+        if (selectedWeapon == 2)
+        {
+            MAIN.SoundPlay(MAIN.GetGlobal().sounds, "pianta seme", end);
+        }
+
         GameObject explos = Instantiate(w.explosion, end, Quaternion.identity);
         MAIN.Orient(explos.transform);
         Destroy(bullet.gameObject, 0);

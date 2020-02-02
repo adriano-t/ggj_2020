@@ -62,10 +62,10 @@ public class Cell : MonoBehaviour {
 
 		planet = MAIN.GetGlobal().GetActivePlanet();
 		Renderer rend = GetComponent<MeshRenderer>();
-		mat = new Material(rend.material);
+		//mat = new Material(rend.material);
 
-		mat.SetColor("_Color", mat.GetColor("_Color") * (Array.IndexOf(planet.cells, this) % 2 == 0 ? 0.9f : 1.1f));
-		rend.material = mat;
+		//mat.SetColor("_Color", mat.GetColor("_Color") * (Array.IndexOf(planet.cells, this) % 2 == 0 ? 0.9f : 1.1f));
+		//rend.material = mat;
 
 		StartCoroutine(UpdateSlow());
 
@@ -133,7 +133,8 @@ public class Cell : MonoBehaviour {
 
 	void SetMaterial (int index)
 	{
-		if (mat) GetComponent<MeshRenderer>().material = MAIN.GetGlobal().cellMaterials[index];
+		//if (mat) 
+		GetComponent<MeshRenderer>().material = MAIN.GetGlobal().cellMaterials[index];
 	}
 
 	public void Hit (int weaponIndex)

@@ -16,7 +16,6 @@ public class TriggerRicarica : MonoBehaviour
                 MAIN.GetPlayer().ammo.Reload();
                 MAIN.SoundPlay(MAIN.GetGlobal().sounds, "ricarica", transform.position);
 
-                MAIN.GetGlobal().weaponHud.SetAmmo(MAIN.GetPlayer().weapon.selectedWeapon, 3);
                 entered = true;
             }
         }
