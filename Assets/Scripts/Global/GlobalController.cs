@@ -82,11 +82,11 @@ public class GlobalController : MonoBehaviour
 
 			if(MAIN.CO2level >= 100)
 			{
-
+				//perso
 			}
 			else if (MAIN.CO2level <= 0)
 			{
-
+				//vinto
 			}
 
 			healtBar.SetValue(MAIN.CO2level/100f);
