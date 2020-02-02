@@ -106,11 +106,13 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("ChangeWeaponLeft"))
             {
                 weapon.GetPreviousWeapon();
+                MAIN.SoundPlay(global.sounds, "cambio arma", transform.position);
             }
 
             if (Input.GetButtonDown("ChangeWeaponRight"))
             {
                 weapon.GetNextWeapon();
+                MAIN.SoundPlay(global.sounds, "cambio arma", transform.position);
             }
         }
 
@@ -135,7 +137,7 @@ public class Player : MonoBehaviour
             weapon.Shoot();
         }
         
-        //global.weaponHud.SetAmmo(weapon.selectedWeapon, ammo.ammo[weapon.selectedWeapon]);
+        global.weaponHud.SetAmmo(weapon.selectedWeapon, ammo.ammo[weapon.selectedWeapon]);
 	}
 
     bool Position(float x, float y)
