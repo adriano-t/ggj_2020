@@ -42,22 +42,22 @@ public class Player : MonoBehaviour
 
 		Vector2 inputs = new Vector2(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
-
+        bool mov = true;
 		
 		if (camController.cameraBehind) {
 
 			Rotation(inputs.x * rotationVelocity);
-			Position(0, (Mathf.Abs(inputs.y) < 0.1f ? 0 : Mathf.Sign(inputs.y)) * velocity * Time.deltaTime);
+			mov = Position(0, (Mathf.Abs(inputs.y) < 0.1f ? 0 : Mathf.Sign(inputs.y)) * velocity * Time.deltaTime);
 
 			transform.position = rotation * Vector3.forward * planet.GetRadius();
 			transform.rotation = Quaternion.Lerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
 
-			anim.SetFloat("speed", Mathf.Abs(inputs.y));
+			anim.SetFloat("speed", mov ? Mathf.Abs(inputs.y) : 0);
 		}
 		else {
 			
 
-			Position(inputs.x * velocity * Time.deltaTime, inputs.y * velocity * Time.deltaTime);
+			mov = Position(inputs.x * velocity * Time.deltaTime, inputs.y * velocity * Time.deltaTime);
 
 			transform.position = rotation * Vector3.forward * planet.GetRadius();
 			transform.rotation = Quaternion.Lerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
@@ -73,10 +73,11 @@ public class Player : MonoBehaviour
 				transform.GetChild(0).transform.localRotation = Quaternion.Lerp(localRotation, Quaternion.Euler(0, angleY + offset, 0), Time.deltaTime * rotationVelocity * 0.5f);
 			}
 
-			anim.SetFloat("speed", inputs.sqrMagnitude);
+			anim.SetFloat("speed", mov ? inputs.sqrMagnitude : 0);
 		}
 
         speed = Vector3.Magnitude(transform.position - prevPos);
+        if (!mov) speed = 0;
         prevPos = transform.position;
 		#endregion
 
@@ -114,12 +115,16 @@ public class Player : MonoBehaviour
 		weapon.Shoot();
 	}
 
-    void Position(float x, float y)
+    bool Position(float x, float y)
     {
+        if (Physics.Raycast(new Ray(transform.position, transform.forward * Mathf.Sign(y)), 1f, 1 << 10)) return false;
+
         Vector2 perpendicular = new Vector2(-direction.y, direction.x);
         Quaternion vRot = Quaternion.AngleAxis(y, perpendicular);
         Quaternion hRot = Quaternion.AngleAxis(x, direction);
         rotation *= hRot * vRot;
+
+        return true;
     }
 
     void Rotation(float amt)

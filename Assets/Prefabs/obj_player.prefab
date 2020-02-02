@@ -20446,6 +20446,7 @@ MonoBehaviour:
   anim: {fileID: 6629385726310527850}
   cameraObj: {fileID: 7377377177644096345}
   weapon: {fileID: 7377377176616364296}
+  speed: 0
 --- !u!1 &7377377177438178919
 GameObject:
   m_ObjectHideFlags: 0
@@ -20818,21 +20819,21 @@ MonoBehaviour:
     obj: {fileID: 799899945615930442}
     bullet: {fileID: 5221053457259561152, guid: 149a74a77d9b3dc459f769de9bc600e8,
       type: 3}
-    explosion: {fileID: 8928366081469732199, guid: 2f88bbe82345ae0418677f912c7bc929,
+    explosion: {fileID: 8400737499191291237, guid: 7161b0e20a6f72b4d86fe7db99d8414f,
       type: 3}
     sounds: []
   - particles: {fileID: 7994847764156165863}
     obj: {fileID: 6470051120738942175}
     bullet: {fileID: 5221053457259561152, guid: 74e94b9d53e8e7e4dbbf2a4fa5e2d39b,
       type: 3}
-    explosion: {fileID: 8928366081469732199, guid: 2f88bbe82345ae0418677f912c7bc929,
+    explosion: {fileID: 8400737499191291237, guid: 7161b0e20a6f72b4d86fe7db99d8414f,
       type: 3}
     sounds: []
   - particles: {fileID: 6730154993569745437}
     obj: {fileID: 4147756552126135847}
     bullet: {fileID: 5221053457259561152, guid: 4188350070f1e004a8d57a7c90a35dc7,
       type: 3}
-    explosion: {fileID: 8928366081469732199, guid: 2f88bbe82345ae0418677f912c7bc929,
+    explosion: {fileID: 8400737499191291237, guid: 6e1bb26fbc56a9a4eb80e5d4a481e50f,
       type: 3}
     sounds: []
   selectedWeapon: 0

@@ -30,7 +30,8 @@ public class Planet : MonoBehaviour
 			//GameObject tree = Instantiate(global.prefabForest, c.transform.position, Quaternion.identity);
 			c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.semi, Cell.Stato.foresta, Cell.Stato.foresta,
 				Cell.Stato.deserto,
-				Cell.Stato.ghiaccio));
+				Cell.Stato.ghiaccio)
+				);
 			
 
 			occupiedCells--;

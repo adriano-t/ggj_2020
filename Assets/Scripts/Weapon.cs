@@ -69,10 +69,6 @@ public class Weapon : MonoBehaviour
                 StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height ), hit.point));
             }
         }
-
-        //var hits = Physics.OverlapSphere(transform.position + transform.forward, 2);
-        
-        //Debug.DrawLine(transform.position, transform.position + transform.forward * weaponRange, Color.red, 10.0f);
     }
 
     IEnumerator Trajectory(StructWeapon w, Cell target, Transform bullet, Vector3 mid, Vector3 end)

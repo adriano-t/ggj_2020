@@ -120,8 +120,8 @@ public class Cell : MonoBehaviour {
 		{
 			case 0: //acqua
 				{
-					if (stato == Stato.semi) stato = Stato.piante;
-					else if (stato == Stato.piante) stato = Stato.foresta;
+					if (stato == Stato.semi) SetStato(Stato.piante);
+					else if (stato == Stato.piante) SetStato(Stato.foresta);
 					else if (stato == Stato.deserto) stato = Stato.erba;
 					break;
 				}
@@ -131,7 +131,7 @@ public class Cell : MonoBehaviour {
 					if (stato == Stato.semi) stato = Stato.semifuoco;
 					else if (stato == Stato.piante) stato = Stato.piantefuoco;
 					else if (stato == Stato.foresta) stato = Stato.forestafuoco;
-					else if (stato == Stato.ghiaccio) stato = Stato.erba;
+					else if (stato == Stato.ghiaccio) { stato = Stato.erba; SetMaterial(0); }
 					else if (stato == Stato.erba) stato = Stato.deserto;
 
 					if (!prefs.Contains(global.incendio)) InstantiateObj(global.incendio);
@@ -140,7 +140,10 @@ public class Cell : MonoBehaviour {
 
 			case 2: //semi
 				{
-					if (stato == Stato.erba) stato = Stato.semi;
+					if (stato == Stato.erba)
+					{
+						SetStato(Stato.semi);
+					}
 					
 					break;
 				}
@@ -169,6 +172,15 @@ public class Cell : MonoBehaviour {
 		if (!global) global = MAIN.GetGlobal();
 		stato = s;
 
+		if (stato != oldStato)
+		{
+			while (prefs.Count > 0)
+			{
+				Vanish(prefs[0]);
+				prefs.RemoveAt(0);
+			}
+		}
+
 		switch (stato)
 		{
 			case Stato.erba:
@@ -191,13 +203,17 @@ public class Cell : MonoBehaviour {
 			case Stato.fuoco:
 				break;
 			case Stato.deserto:
+				SetMaterial(1);
 				break;
 			case Stato.ghiaccio:
+				SetMaterial(4);
 				InstantiateObj(global.iceberg);
 				break;
 			default:
 				break;
 		}
+
+		oldStato = stato;
 	}
 
 }
