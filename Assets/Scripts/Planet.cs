@@ -15,6 +15,16 @@ public class Planet : MonoBehaviour
 	public Cell[] cells;
 
 
+	public float CalculateCo2 ()
+	{
+		float val = 0;
+		foreach(Cell cell in cells)
+		{
+			val += cell.GetCo2Contribution();
+		}
+
+		return val;
+	}
 
 	public void GenerateSurface() {
 		GlobalController global = MAIN.GetGlobal();
@@ -28,8 +38,8 @@ public class Planet : MonoBehaviour
 			Cell c = cellList[0];
 
 			//GameObject tree = Instantiate(global.prefabForest, c.transform.position, Quaternion.identity);
-			c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.semi, Cell.Stato.foresta, Cell.Stato.foresta,
-				Cell.Stato.deserto,
+			c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.semi, 
+				Cell.Stato.deserto, Cell.Stato.deserto, Cell.Stato.fuoco, Cell.Stato.fuoco,
 				Cell.Stato.ghiaccio)
 				);
 			

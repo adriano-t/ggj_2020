@@ -6,6 +6,7 @@ static public class MAIN
 {
     static public Player player = null;
     static public GlobalController global = null;
+	static public float CO2level = 50;
 
 
     static public Player GetPlayer() {

@@ -8,11 +8,12 @@ public class GlobalController : MonoBehaviour
 	[Header("Global Prefabs")] 
 	public GameObject playerObj;
 	public Material[] cellMaterials;
+	public HealthBar healtBar;
+	public float difficulty = 1;
 
 	[FormerlySerializedAs("Weapon HUD")] public WeaponHUD weaponHud;
 	public int currentLevel = 0;
-
-
+	
 	[Header("Planet Prefabs")]
 	public GameObject prefabSemi;
 	public GameObject prefabPiante;
@@ -25,6 +26,7 @@ public class GlobalController : MonoBehaviour
 
 
 	Planet activePlanet;
+	Coroutine routine;
 
 
 	void Awake()
@@ -46,17 +48,45 @@ public class GlobalController : MonoBehaviour
 		activePlanet.gameObject.SetActive(true);
 		activePlanet.GenerateSurface();
 
+		MAIN.CO2level = 50;
+
 		GameObject player = Instantiate(playerObj, activePlanet.GetCenter() + Vector3.up * activePlanet.GetRadius() + 
 			Vector3.forward * 4f,
 			Quaternion.identity);
 
 		player.SetActive(true);
 		MAIN.Orient(player.transform);
+
+		
+		if(routine != null)
+			StopCoroutine(routine);
+		routine = StartCoroutine(RoutineUpdateCo2());
 	}
 
 	public void LoadNextLevel()
 	{
 		StartCoroutine(LoadNextLevelRoutine());
+	}
+
+	IEnumerator RoutineUpdateCo2 ()
+	{
+		while (true)
+		{
+			float value = GetActivePlanet().CalculateCo2();
+			MAIN.CO2level += value * 0.1f;
+			Debug.LogError(MAIN.CO2level);
+			if(MAIN.CO2level >= 100)
+			{
+
+			}
+			else if (MAIN.CO2level <= 0)
+			{
+
+			}
+
+			healtBar.SetValue(MAIN.CO2level/100f);
+			yield return new WaitForSeconds(1);
+		}
 	}
 
 	IEnumerator LoadNextLevelRoutine()
