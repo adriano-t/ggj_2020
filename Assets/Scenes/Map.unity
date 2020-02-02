@@ -133,6 +133,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &435098925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3719016673950010104, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
+    type: 3}
+  m_PrefabInstance: {fileID: 653183820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &492672070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2820535991884824596, guid: 3301ad6e6f73d4e4e90df6eab3529180,
@@ -5269,8 +5281,12 @@ MonoBehaviour:
   healtBar: {fileID: 925870644}
   difficulty: 1
   weaponHud:
-    weaponNames: []
-    weaponName: {fileID: 0}
+    weaponNames:
+    - Pistola ad acqua
+    - Lanciafiamme
+    - Sparasemi
+    - Spazzafoglie
+    weaponName: {fileID: 435098925}
     weaponHUDComponents:
     - {fileID: 1450857347}
     - {fileID: 2140632074}
@@ -5303,11 +5319,20 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d867f87db7fec244d93ce9fa6b962960, type: 3}
     - {fileID: 8300000, guid: 93eb42c23185b54499809f10ee6953f8, type: 3}
     - {fileID: 8300000, guid: 2f22f36898ecc6247a1800aa215d5558, type: 3}
-    volume: 0.5
-    volumeRandomizer: 0.2
-    pitch: 1
+    volume: 0.09
+    volumeRandomizer: 0.08
+    pitch: 0.8
     pitchRandomizer: 0.4
     loop: 0
+    sound3D: 0
+  - soundName: GameTheme
+    clips:
+    - {fileID: 8300000, guid: 61aa3ff7e8583394ab891f3344de006a, type: 3}
+    volume: 0.5
+    volumeRandomizer: 0
+    pitch: 1
+    pitchRandomizer: 0
+    loop: 1
     sound3D: 0
 --- !u!4 &1442136279
 Transform:
