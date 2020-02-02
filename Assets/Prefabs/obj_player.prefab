@@ -10348,7 +10348,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d318d2a952cc3ee44bfb251059f2ffdc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20567,7 +20567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   following: {fileID: 7377377177413923710}
   cameraBehind: 1
-  offset: {x: 0, y: 7, z: -3.5}
+  offset: {x: 0, y: 12, z: -6}
   rigidityPos: 15
   rigidityRot: 6
 --- !u!114 &153240654104234785
@@ -20709,7 +20709,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0d0da7dae60461347b982077f22c8cbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
