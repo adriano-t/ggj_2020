@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
         public void Reload()
         {
             for (int i = 0; i < ammo.Length; i++) ammo[i] = 3;
-
         }
     }
 
@@ -120,10 +119,10 @@ public class Player : MonoBehaviour
 			anim.SetBool("shoot", true);
         }
 
-      /*  if (Input.GetButtonUp("Pause"))
+        if (Input.GetButtonUp("Pause"))
         {
-            //TODO Mostrare menù di pausa
-        }*/
+            MAIN.SoundPlay(global.sounds, "Pause", transform.position);
+        }
 
 
     }
@@ -132,6 +131,7 @@ public class Player : MonoBehaviour
         if (ammo.ammo[weapon.selectedWeapon] > 0)
         {
 	        ammo.ammo[weapon.selectedWeapon]--;
+            MAIN.SoundPlay(global.sounds, "arma"+weapon.selectedWeapon, transform.position);
             weapon.Shoot();
         }
         
