@@ -8,6 +8,7 @@ TagManager:
   - world
   - global
   - camera
+  - bullet
   layers:
   - Default
   - TransparentFX
