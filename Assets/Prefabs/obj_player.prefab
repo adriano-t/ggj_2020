@@ -125,7 +125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 63ff49a7110a63846b2603da2ffd8ea9, type: 3}
+  - {fileID: 2100000, guid: ca3b863eca660244a8d54fabb4599843, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10173,7 +10173,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 63ff49a7110a63846b2603da2ffd8ea9, type: 3}
+  - {fileID: 2100000, guid: ca3b863eca660244a8d54fabb4599843, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15301,7 +15301,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 63ff49a7110a63846b2603da2ffd8ea9, type: 3}
+  - {fileID: 2100000, guid: ca3b863eca660244a8d54fabb4599843, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15505,7 +15505,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 63ff49a7110a63846b2603da2ffd8ea9, type: 3}
+  - {fileID: 2100000, guid: ca3b863eca660244a8d54fabb4599843, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20443,6 +20443,7 @@ MonoBehaviour:
   velocity: 40
   offset: -90
   rotationVelocity: 180
+  PERLOD: {fileID: 3641807842389532176}
   anim: {fileID: 6629385726310527850}
   cameraObj: {fileID: 7377377177644096345}
   weapon: {fileID: 7377377176616364296}

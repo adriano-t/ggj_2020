@@ -74,7 +74,7 @@ public class GlobalController : MonoBehaviour
 		{
 			float value = GetActivePlanet().CalculateCo2();
 			MAIN.CO2level += value * 0.1f;
-			Debug.LogError(MAIN.CO2level);
+
 			if(MAIN.CO2level >= 100)
 			{
 

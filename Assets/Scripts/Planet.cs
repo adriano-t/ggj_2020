@@ -22,7 +22,7 @@ public class Planet : MonoBehaviour
 		{
 			val += cell.GetCo2Contribution();
 		}
-		Debug.LogWarning(val);
+
 		return val;
 	}
 
