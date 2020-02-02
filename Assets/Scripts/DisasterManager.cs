@@ -106,7 +106,7 @@ public class DisasterManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         List<DisasterStatus> activeDisasters = new List<DisasterStatus>();
 
-        //yield return new WaitForSeconds(20.0f);
+        yield return new WaitForSeconds(20.0f);
         while (true)
         {
             Cell cell = MAIN.GetGlobal().FindFreeCell();
@@ -129,7 +129,7 @@ public class DisasterManager : MonoBehaviour
             cell.SetStato(Cell.Stato.ghiaccio);
             Destroy(go);
 
-            //yield return new WaitForSeconds(Random.Range(20, 60));
+            yield return new WaitForSeconds(Random.Range(20, 60));
         }
     }
 }
