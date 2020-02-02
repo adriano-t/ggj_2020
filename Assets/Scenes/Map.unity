@@ -536,16 +536,6 @@ PrefabInstance:
       propertyPath: weaponHud.backgrounds.Array.data[3]
       value: 
       objectReference: {fileID: 594376999}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[1].volume
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[7].volume
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681231, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
       propertyPath: m_LocalPosition.x
