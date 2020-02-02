@@ -5,27 +5,27 @@ using UnityEngine.Serialization;
 
 public class GlobalController : MonoBehaviour
 {
-	[Header("Global Prefabs")] public GameObject playerObj;
-	public Materials materials;
+	[Header("Global Prefabs")] 
+	public GameObject playerObj;
+	public Material[] cellMaterials;
+
 	[FormerlySerializedAs("Weapon HUD")] public WeaponHUD weaponHud;
 	public int currentLevel = 0;
-	
 
-	[Header("Planet Prefabs")] public GameObject prefabForest;
 
-	[Header("Sounds")] public Sound[] sounds;
+	[Header("Planet Prefabs")]
+	public GameObject prefabSemi;
+	public GameObject prefabPiante;
+	public GameObject prefabForest;
+	public GameObject incendio;
+	public GameObject iceberg;
+
+	[Header("Sounds")] 
+	public Sound[] sounds;
 
 
 	Planet activePlanet;
 
-
-	[System.Serializable]
-	public struct Materials
-	{
-		public Material grass;
-		public Material ice;
-		public Material desert;
-	}
 
 	void Awake()
 	{

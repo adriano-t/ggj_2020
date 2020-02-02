@@ -5,36 +5,37 @@ using UnityEngine;
 
 
 public class Cell : MonoBehaviour {
-	private float temperature;
-	private float waterLevel;
 	private List<Cell> neighbors = new List<Cell>();
-	private CellEvent currentEvent;
+
+	public enum Stato {
+		erba,
+		semi,
+		piante,
+		foresta,
+		semifuoco,
+		piantefuoco,
+		forestafuoco,
+		fuoco,
+		deserto,
+		ghiaccio
+	};
+
+	public Stato stato;
+	Stato oldStato;
+	List<GameObject> prefs = new List<GameObject>();
 
 	Material mat;
 	Planet planet;
+	GlobalController global;
 
-	public float Temperature {
-		get { return this.temperature; }
-		set { this.temperature = Mathf.Min(0, Mathf.Max(this.temperature + value, 100)); }
-	}
 
-	public float WaterLevel {
-		get { return this.waterLevel; }
-		set { this.waterLevel = Mathf.Min(0, Mathf.Max(this.waterLevel + value, 100)); }
-	}
 
 	void Start() {
-		//GameObject obj = new GameObject("coll");
-		//obj.transform.position = transform.position;
 		var c = gameObject.AddComponent<MeshCollider>();
 		c.convex = true;
 
-		//CapsuleCollider c = obj.AddComponent<CapsuleCollider>();
-		//c.radius = 3.25f;
-		//c.height = 15;
-		//c.isTrigger = true;
-		//MAIN.Orient(obj.transform, 7.5f);
-		//obj.transform.SetParent(transform);
+		global = MAIN.GetGlobal();
+
 
 		planet = MAIN.GetGlobal().GetActivePlanet();
 		Renderer rend = GetComponent<MeshRenderer>();
@@ -43,7 +44,7 @@ public class Cell : MonoBehaviour {
 		mat.SetColor("_Color", mat.GetColor("_Color") * (Array.IndexOf(planet.cells, this) % 2 == 0 ? 0.9f : 1.1f));
 		rend.material = mat;
 
-
+		StartCoroutine(UpdateSlow());
 
 		Collider[] colliders = Physics.OverlapSphere(transform.position, 5);
 		foreach (var coll in colliders)
@@ -52,17 +53,50 @@ public class Cell : MonoBehaviour {
 
 	}
 
-	void Update() {
-		if (this.currentEvent != null) {
-			this.currentEvent.Update();
 
-			if (this.currentEvent.isOver()) {
-				this.currentEvent.OnEnd();
-				this.currentEvent = null;
+	IEnumerator UpdateSlow()
+	{
+		while (true)
+		{
+			if (stato == Stato.forestafuoco)
+			{
+				yield return new WaitForSeconds(10);
+				if (stato == Stato.forestafuoco) stato = Stato.deserto;
 			}
+
+			if (stato == Stato.piantefuoco)
+			{
+				yield return new WaitForSeconds(7);
+				if (stato == Stato.piantefuoco) stato = Stato.deserto;
+			}
+
+			if (stato == Stato.semifuoco)
+			{
+				yield return new WaitForSeconds(5);
+				if (stato == Stato.semifuoco) stato = Stato.deserto;
+			}
+
+
+
+			if (stato != oldStato)
+			{
+				while (prefs.Count > 0)
+				{
+					Vanish(prefs[0]);
+					prefs.RemoveAt(0);
+				}
+			}
+
+			oldStato = stato;
+			yield return new WaitForSeconds(0.5f);
 		}
 	}
 
+	void Vanish(GameObject obj)
+	{
+		obj.transform.position = Vector3.up * 100000;
+		Destroy(obj, 10);
+	}
 	private void OnDestroy ()
 	{
 		if (mat) Destroy(mat);
@@ -73,21 +107,97 @@ public class Cell : MonoBehaviour {
 		return neighbors;
 	}
 
-	public void SetCellEvent(CellEvent cellEvent) {
-		this.currentEvent = cellEvent;
-		this.currentEvent.Start();
+	void SetMaterial(int index)
+	{
+		if (mat) GetComponent<MeshRenderer>().material = MAIN.GetGlobal().cellMaterials[index];
 	}
 
 	public void Hit(int weaponIndex)
 	{
-		Debug.Log("asd", gameObject);
-		// cambiare materiale cella (array MAIN.GetGlobal().materials.xxx)
+		SetMaterial(weaponIndex);
+
 		switch (weaponIndex)
 		{
+			case 0: //acqua
+				{
+					if (stato == Stato.semi) stato = Stato.piante;
+					else if (stato == Stato.piante) stato = Stato.foresta;
+					else if (stato == Stato.deserto) stato = Stato.erba;
+					break;
+				}
+
+			case 1: //fuoco
+				{
+					if (stato == Stato.semi) stato = Stato.semifuoco;
+					else if (stato == Stato.piante) stato = Stato.piantefuoco;
+					else if (stato == Stato.foresta) stato = Stato.forestafuoco;
+					else if (stato == Stato.ghiaccio) stato = Stato.erba;
+					else if (stato == Stato.erba) stato = Stato.deserto;
+
+					if (!prefs.Contains(global.incendio)) InstantiateObj(global.incendio);
+					break;
+				}
+
+			case 2: //semi
+				{
+					if (stato == Stato.erba) stato = Stato.semi;
+					
+					break;
+				}
+
+			case 3: //vento
+				{
+
+					break;
+				}
+
 			default:
 				break;
 		}
 	}
 	 
+	void InstantiateObj(GameObject obj)
+	{
+		GameObject o = Instantiate(obj, transform.position, Quaternion.identity);
+		MAIN.Orient(o.transform);
+
+		prefs.Add(o);
+	}
+
+	public void SetStato(Stato s)
+	{
+		if (!global) global = MAIN.GetGlobal();
+		stato = s;
+
+		switch (stato)
+		{
+			case Stato.erba:
+				break;
+			case Stato.semi:
+				InstantiateObj(global.prefabSemi);
+				break;
+			case Stato.piante:
+				InstantiateObj(global.prefabPiante);
+				break;
+			case Stato.foresta:
+				InstantiateObj(global.prefabForest);
+				break;
+			case Stato.semifuoco:
+				break;
+			case Stato.piantefuoco:
+				break;
+			case Stato.forestafuoco:
+				break;
+			case Stato.fuoco:
+				break;
+			case Stato.deserto:
+				break;
+			case Stato.ghiaccio:
+				InstantiateObj(global.iceberg);
+				break;
+			default:
+				break;
+		}
+	}
 
 }

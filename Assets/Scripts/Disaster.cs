@@ -10,10 +10,5 @@ public class Disaster : MonoBehaviour
         
     }
 
-    public void HitCell(Cell cell)
-    {
-        GameObject go = Instantiate(prefabEvent, cell.transform);
-        cell.SetCellEvent(new CellEventFire(go));
-    }
      
 }

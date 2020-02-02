@@ -61,5 +61,10 @@ static public class MAIN
 		list[i] = list[j];
 		list[j] = temp;
 	}
+	static public T Choose<T> (params T[] a)
+	{
+		return a[Random.Range(0, a.Length)];
+	}
+
 
 }

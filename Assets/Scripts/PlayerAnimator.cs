@@ -11,16 +11,11 @@ public class PlayerAnimator : MonoBehaviour
 
 	public void Shoot() {
 		MAIN.GetPlayer().Shoot();
-		Invoke("ShootAnimEndTimer", 0.7f);
 	}
-
-	public void ShootAnimEndTimer ()
-	{
-		MAIN.GetPlayer().anim.SetBool("shoot", false);
-	}
+	 
 	public void ShootAnimEnd() {
 
-		//MAIN.GetPlayer().anim.SetBool("shoot", false);
+		MAIN.GetPlayer().anim.SetBool("shoot", false);
 	}
 
 

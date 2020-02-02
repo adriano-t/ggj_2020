@@ -5056,10 +5056,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 7377377177413923707, guid: 2d1d5bfe7332a4f4b8e5c5ebdf613a56,
     type: 3}
-  materials:
-    grass: {fileID: 2100000, guid: e311a4da9aa29ac4ebafc6438ebc0648, type: 2}
-    ice: {fileID: 2100000, guid: a505e4d4f5a26c641b8f16d4ca4eff5e, type: 2}
-    desert: {fileID: 2100000, guid: 0cf70db4a37610c449bbd594b8b7a787, type: 2}
+  cellMaterials:
+  - {fileID: 2100000, guid: e311a4da9aa29ac4ebafc6438ebc0648, type: 2}
+  - {fileID: 2100000, guid: 0cf70db4a37610c449bbd594b8b7a787, type: 2}
+  - {fileID: 2100000, guid: e311a4da9aa29ac4ebafc6438ebc0648, type: 2}
+  - {fileID: 2100000, guid: e311a4da9aa29ac4ebafc6438ebc0648, type: 2}
   weaponHud:
     weaponHUDComponents:
     - {fileID: 1450857347}
@@ -5076,8 +5077,15 @@ MonoBehaviour:
     - image: {fileID: 0}
       imageGrayScale: {fileID: 0}
   currentLevel: 0
+  prefabSemi: {fileID: 3080881178851084849, guid: 38425675b795b314b995b458280e6058,
+    type: 3}
+  prefabPiante: {fileID: 6795300301396156639, guid: 241f785715d33714f9cff0a86558a335,
+    type: 3}
   prefabForest: {fileID: 205921383672759076, guid: ba544433a8b4955448166c2eb97c3114,
     type: 3}
+  incendio: {fileID: 8928366081469732199, guid: 2f88bbe82345ae0418677f912c7bc929,
+    type: 3}
+  iceberg: {fileID: 4371675997427256439, guid: aaafdb117be608f4c80b5849e6dc7943, type: 3}
   sounds:
   - soundName: steps
     clips:

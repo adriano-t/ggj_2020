@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     {
         RefreshWeapon();
     }
+    
 
     private void RefreshWeapon ()
     {
@@ -55,7 +56,7 @@ public class Weapon : MonoBehaviour
         w.particles.Play();
 
         Ray rayf = new Ray(transform.position, transform.forward);
-        Ray rayn = new Ray(p.GetCenter(), rayf.GetPoint(weaponRange));
+        Ray rayn = new Ray(p.GetCenter(), rayf.GetPoint(weaponRange + MAIN.GetPlayer().speed/Time.deltaTime*0.5f));
         
         RaycastHit[] hits = Physics.RaycastAll(rayn);
         foreach (RaycastHit hit in hits)
@@ -64,15 +65,14 @@ public class Weapon : MonoBehaviour
 
             if (cell)
             { 
-                cell.Hit(selectedWeapon);
                 GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);
-                StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height * 0.5f), hit.point));
+                StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height ), hit.point));
             }
         }
 
         //var hits = Physics.OverlapSphere(transform.position + transform.forward, 2);
         
-        Debug.DrawLine(transform.position, transform.position + transform.forward * weaponRange, Color.red, 10.0f);
+        //Debug.DrawLine(transform.position, transform.position + transform.forward * weaponRange, Color.red, 10.0f);
     }
 
     IEnumerator Trajectory(StructWeapon w, Cell target, Transform bullet, Vector3 mid, Vector3 end)
@@ -86,7 +86,9 @@ public class Weapon : MonoBehaviour
             yield return null;
         }
 
-        GameObject explos = Instantiate(w.explosion, target.transform.position, Quaternion.identity);
+        target.Hit(selectedWeapon);
+
+        GameObject explos = Instantiate(w.explosion, end, Quaternion.identity);
         MAIN.Orient(explos.transform);
         Destroy(bullet.gameObject, 0);
     }

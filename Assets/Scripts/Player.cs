@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
 	public Weapon weapon;
 
 
-	float angle = 90;
+    private Vector3 prevPos;
+    public float speed;
+    float angle = 90;
     Vector3 direction;
 	Quaternion rotation = Quaternion.Euler(-90, 0, 0);
     Camera cam;
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
 
     void Start() 
     {
+        speed = 0;
         // la creazione del player avviene nel GlobalController
         cam = cameraObj.GetComponent<Camera>();
         global = MAIN.GetGlobal();
@@ -72,6 +75,9 @@ public class Player : MonoBehaviour
 
 			anim.SetFloat("speed", inputs.sqrMagnitude);
 		}
+
+        speed = Vector3.Magnitude(transform.position - prevPos);
+        prevPos = transform.position;
 		#endregion
 
 		
@@ -91,7 +97,7 @@ public class Player : MonoBehaviour
         }
 
         if(Input.GetAxisRaw("Fire") > 0.5f && !anim.GetBool("shoot"))
-        {
+        { 
             Debug.Log("fire");
 			anim.SetBool("shoot", true);
         }
