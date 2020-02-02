@@ -34,13 +34,19 @@ static public class MAIN
 	static public Vector3 GetDir(Vector3 from, Vector3 to) {
 		return (to - from).normalized;
 	}
-	static public void Orient(Transform t) {
+	static public void Orient (Transform t)
+	{
+		Orient(t, 0);
+	}
+	static public void Orient (Transform t, float offset)
+	{
 		Planet p = global.GetActivePlanet();
 		Ray ray = new Ray(p.GetCenter(), MAIN.GetDir(p.GetCenter(), t.position));
 
-		t.up = -MAIN.GetDir(t.position, p.GetCenter());
+		t.up = MAIN.GetDir(p.GetCenter(), t.position);
+		t.up += t.up * offset;
 
-		Vector3 position = ray.GetPoint(p.GetRadius());
+		Vector3 position = ray.GetPoint(p.GetRadius() + offset);
 		t.position = position;
 	}
 

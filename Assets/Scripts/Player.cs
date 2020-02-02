@@ -89,8 +89,9 @@ public class Player : MonoBehaviour
 			global.SetWeapon(weapon.selectedWeapon);
         }
 
-        if(Input.GetAxisRaw("Fire") == 1)
+        if(Input.GetAxisRaw("Fire") > 0.5f && !anim.GetBool("shoot"))
         {
+            Debug.Log("fire");
 			anim.SetBool("shoot", true);
         }
 

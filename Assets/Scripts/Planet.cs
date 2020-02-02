@@ -33,6 +33,8 @@ public class Planet : MonoBehaviour
 			occupiedCells--;
 			cellList.RemoveAt(0);
 		}
+
+		MAIN.Shuffle(cells, seed);
 	}
 
 

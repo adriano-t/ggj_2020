@@ -715,10 +715,6 @@ MonoBehaviour:
   velocity: 40
   offset: -90
   rotationVelocity: 180
-  weaponHUD:
-    weaponHUDComponents:
-    - {fileID: 0}
-    weaponImages: []
   anim: {fileID: 6629385726310527850}
   cameraObj: {fileID: 7377377177644096345}
   weapon: {fileID: 7377377176616364296}
@@ -1020,8 +1016,13 @@ MonoBehaviour:
   weapons:
   - particles: {fileID: 7377377177041411084}
     obj: {fileID: 8583395325012692086}
+    bullet: {fileID: 5221053457259561152, guid: 149a74a77d9b3dc459f769de9bc600e8,
+      type: 3}
+    explosion: {fileID: 8928366081469732199, guid: 2f88bbe82345ae0418677f912c7bc929,
+      type: 3}
+    sounds: []
   selectedWeapon: 0
-  weaponRange: 2
+  weaponRange: 3
 --- !u!1 &8658237325140758292
 GameObject:
   m_ObjectHideFlags: 0

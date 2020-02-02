@@ -5046,6 +5046,9 @@ MonoBehaviour:
     grass: {fileID: 2100000, guid: e311a4da9aa29ac4ebafc6438ebc0648, type: 2}
     ice: {fileID: 2100000, guid: a505e4d4f5a26c641b8f16d4ca4eff5e, type: 2}
     desert: {fileID: 2100000, guid: 0cf70db4a37610c449bbd594b8b7a787, type: 2}
+  weaponHud:
+    weaponHUDComponents: []
+    weaponImages: []
   currentLevel: 0
   prefabForest: {fileID: 205921383672759076, guid: ba544433a8b4955448166c2eb97c3114,
     type: 3}
@@ -5181,12 +5184,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491183486}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 19, y: 19, z: 19}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 492672070}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679443042
 GameObject:
@@ -5226,16 +5229,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1679443043}
     m_Modifications:
-    - target: {fileID: 37928017857362732, guid: 3301ad6e6f73d4e4e90df6eab3529180,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e311a4da9aa29ac4ebafc6438ebc0648, type: 2}
-    - target: {fileID: 1735953596326168738, guid: 3301ad6e6f73d4e4e90df6eab3529180,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e311a4da9aa29ac4ebafc6438ebc0648, type: 2}
     - target: {fileID: 2820535991884824596, guid: 3301ad6e6f73d4e4e90df6eab3529180,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5295,16 +5288,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: planet_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2820535991884824600, guid: 3301ad6e6f73d4e4e90df6eab3529180,
-        type: 3}
-      propertyPath: seed
-      value: 301
-      objectReference: {fileID: 0}
-    - target: {fileID: 2820535991884824600, guid: 3301ad6e6f73d4e4e90df6eab3529180,
-        type: 3}
-      propertyPath: density
-      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3301ad6e6f73d4e4e90df6eab3529180, type: 3}

@@ -10,6 +10,9 @@ public class Weapon : MonoBehaviour
     {
         public ParticleSystem particles;
         public GameObject obj;
+        public GameObject bullet;
+        public GameObject explosion;
+        public Sound[] sounds;
     }
     public StructWeapon[] weapons;
     public int selectedWeapon = 0;
@@ -44,18 +47,24 @@ public class Weapon : MonoBehaviour
 
     public void Shoot ()
     {
-        weapons[selectedWeapon].particles.Play();
+        StructWeapon w = weapons[selectedWeapon];
+        Planet p = MAIN.GetGlobal().GetActivePlanet();
+        w.particles.Play();
 
         Ray rayf = new Ray(transform.position, MAIN.GetPlayer().transform.forward);
-        Ray rayn = new Ray(MAIN.GetGlobal().GetActivePlanet().GetCenter(), rayf.GetPoint(weaponRange));
-
+        Ray rayn = new Ray(p.GetCenter(), rayf.GetPoint(weaponRange));
+        
         RaycastHit[] hits = Physics.RaycastAll(rayn);
         foreach (RaycastHit hit in hits)
         {
-            Cell cell = hit.collider.transform.parent.GetComponent<Cell>();
+            if (!hit.collider.transform)
+                Debug.LogError("LEZZO", gameObject);
+            Cell cell = hit.collider.transform.GetComponent<Cell>();
             if (cell)
             { 
-                cell.Hit(selectedWeapon); 
+                cell.Hit(selectedWeapon);
+                GameObject bullet = Instantiate(w.bullet, transform.position, transform.rotation);
+                StartCoroutine(Trajectory(w, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height * 0.5f), cell.transform.position));
             }
         }
 
@@ -63,4 +72,21 @@ public class Weapon : MonoBehaviour
         
         Debug.DrawLine(transform.position, transform.position + transform.forward * weaponRange, Color.red, 10.0f);
     }
+
+    IEnumerator Trajectory(StructWeapon w, Transform bullet, Vector3 mid, Vector3 end)
+    { 
+
+        Vector3 startPos = bullet.position;
+        for (float i = 0; i < 1; i+= Time.deltaTime) 
+        {
+            var pos = Vector3.Lerp(startPos, mid, i);
+            bullet.position = Vector3.Lerp(pos, end, i); 
+            yield return null;
+        }
+
+        GameObject explos = Instantiate(w.explosion, end, Quaternion.identity);
+        MAIN.Orient(explos.transform);
+        Destroy(bullet.gameObject, 0);
+    }
 }
+

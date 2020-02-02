@@ -27,7 +27,7 @@ public class GlobalController : MonoBehaviour
 		public Material desert;
 	}
 
-	void Start()
+	void Awake()
 	{
 		LoadMap();
 	}
