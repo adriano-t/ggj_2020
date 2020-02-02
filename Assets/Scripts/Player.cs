@@ -79,20 +79,21 @@ public class Player : MonoBehaviour
         speed = Vector3.Magnitude(transform.position - prevPos);
         if (!mov) speed = 0;
         prevPos = transform.position;
-		#endregion
+        #endregion
 
-		
 
-        //TODO Implementare cambio arma
-        if(Input.GetButtonDown("ChangeWeaponLeft"))
+
+        if (!GameObject.FindWithTag("bullet"))
         {
-            weapon.GetPreviousWeapon(); 
-        }
+            if (Input.GetButtonDown("ChangeWeaponLeft"))
+            {
+                weapon.GetPreviousWeapon();
+            }
 
-        if (Input.GetButtonDown("ChangeWeaponRight"))
-        {
-            weapon.GetNextWeapon();
-
+            if (Input.GetButtonDown("ChangeWeaponRight"))
+            {
+                weapon.GetNextWeapon();
+            }
         }
 
         if(Input.GetAxisRaw("Fire") > 0.5f && !anim.GetBool("shoot"))

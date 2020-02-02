@@ -15,8 +15,8 @@ public class Cell : MonoBehaviour {
 		semifuoco,
 		piantefuoco,
 		forestafuoco,
-		fuoco,
 		deserto,
+		desertofuoco,
 		ghiaccio
 	};
 
@@ -27,33 +27,33 @@ public class Cell : MonoBehaviour {
 	Material mat;
 	Planet planet;
 
-    public float GetCo2Contribution ()
-    {
+	public float GetCo2Contribution ()
+	{
 		switch (stato)
 		{
 			case Stato.piante:
 				return -1;
 			case Stato.foresta:
-				return -2; 
+				return -2;
 			case Stato.semifuoco:
-				return +2; 
+				return +2;
 			case Stato.piantefuoco:
-				return +2; 
+				return +2;
 			case Stato.forestafuoco:
-				return +3; 
-			case Stato.fuoco:
-				return +2; 
+				return +3;
+			case Stato.desertofuoco:
+				return +2;
 			default:
 				return 0;
 		}
 
 	}
 
-    GlobalController global;
+	GlobalController global;
 
 
 
-	void Start() {
+	void Start () {
 		var c = gameObject.AddComponent<MeshCollider>();
 		c.convex = true;
 
@@ -77,7 +77,7 @@ public class Cell : MonoBehaviour {
 	}
 
 
-	IEnumerator UpdateSlow()
+	IEnumerator UpdateSlow ()
 	{
 		while (true)
 		{
@@ -115,7 +115,7 @@ public class Cell : MonoBehaviour {
 		}
 	}
 
-	void Vanish(GameObject obj)
+	void Vanish (GameObject obj)
 	{
 		obj.transform.position = Vector3.up * 100000;
 		Destroy(obj, 10);
@@ -131,12 +131,12 @@ public class Cell : MonoBehaviour {
 		return neighbors;
 	}
 
-	void SetMaterial(int index)
+	void SetMaterial (int index)
 	{
 		if (mat) GetComponent<MeshRenderer>().material = MAIN.GetGlobal().cellMaterials[index];
 	}
 
-	public void Hit(int weaponIndex)
+	public void Hit (int weaponIndex)
 	{
 		Stato o = stato;
 
@@ -166,13 +166,11 @@ public class Cell : MonoBehaviour {
 					}
 					else if (stato == Stato.deserto)
 					{
-						stato = Stato.erba;
-						SetMaterial(0);
+						SetStato(Stato.erba);
 					}
-					else if (stato == Stato.fuoco)
+					else if (stato == Stato.desertofuoco)
 					{
-						stato = Stato.deserto;
-						SetMaterial(0);
+						SetStato(Stato.deserto);
 					}
 					break;
 				}
@@ -180,26 +178,28 @@ public class Cell : MonoBehaviour {
 			case 1: //fuoco
 				{
 					if (stato == Stato.semi)
-					{
-						stato = Stato.semifuoco;
+					{ 
+						SetStato(Stato.semifuoco, false);
 					}
 					else if (stato == Stato.piante)
-					{
-						stato = Stato.piantefuoco;
+					{ 
+						SetStato(Stato.piantefuoco, false);
 					}
 					else if (stato == Stato.foresta)
-					{
-						stato = Stato.forestafuoco;
+					{ 
+						SetStato(Stato.forestafuoco, false); 
 					}
 					else if (stato == Stato.ghiaccio)
 					{
-						stato = Stato.erba;
-						SetMaterial(0);
+						SetStato(Stato.erba);
 					}
 					else if (stato == Stato.erba)
 					{
-						stato = Stato.deserto;
-						SetMaterial(1);
+						SetStato(Stato.deserto); 
+					}
+					else if (stato == Stato.deserto)
+					{
+						SetStato(Stato.desertofuoco); 
 					}
 
 					if (!prefs.Contains(global.incendio)) InstantiateObj(global.incendio);
@@ -212,7 +212,7 @@ public class Cell : MonoBehaviour {
 					{
 						SetStato(Stato.semi);
 					}
-					
+
 					break;
 				}
 
@@ -228,8 +228,8 @@ public class Cell : MonoBehaviour {
 
 		if (o != stato) SetMaterial(weaponIndex);
 	}
-	 
-	public void InstantiateObj(GameObject obj)
+
+	public void InstantiateObj (GameObject obj)
 	{
 		GameObject o = Instantiate(obj, transform.position, Quaternion.identity);
 		MAIN.Orient(o.transform);
@@ -237,7 +237,7 @@ public class Cell : MonoBehaviour {
 		prefs.Add(o);
 	}
 
-	public void SetStato(Stato s, bool destroyCheck)
+	public void SetStato (Stato s, bool destroyCheck)
 	{
 		if (!global) global = MAIN.GetGlobal();
 		stato = s;
@@ -253,30 +253,17 @@ public class Cell : MonoBehaviour {
 
 		switch (stato)
 		{
-			case Stato.erba:
-				break;
 			case Stato.semi:
+				SetMaterial(0);
 				InstantiateObj(global.prefabSemi);
 				break;
 			case Stato.piante:
+				SetMaterial(0);
 				InstantiateObj(global.prefabPiante);
 				break;
 			case Stato.foresta:
+				SetMaterial(0);
 				InstantiateObj(global.prefabForest);
-				break;
-			case Stato.semifuoco:
-				break;
-			case Stato.piantefuoco:
-				break;
-			case Stato.forestafuoco:
-				break;
-			case Stato.fuoco:
-				SetMaterial(1);
-				InstantiateObj(global.incendio);
-				if (oldStato == Stato.semi) SetStato(Stato.semifuoco, false);
-				else if (oldStato == Stato.piante) SetStato(Stato.piantefuoco, false);
-				else if (oldStato == Stato.foresta) SetStato(Stato.forestafuoco, false);
-				else SetStato(Stato.deserto, false);
 				break;
 			case Stato.deserto:
 				SetMaterial(1);
@@ -285,17 +272,43 @@ public class Cell : MonoBehaviour {
 				SetMaterial(4);
 				InstantiateObj(global.iceberg);
 				break;
+			case Stato.erba:
+				SetMaterial(0);
+				break;
+			case Stato.semifuoco:
+				SetMaterial(1);
+				InstantiateObj(global.incendio);
+				break;
+			case Stato.piantefuoco:
+				SetMaterial(1);
+				InstantiateObj(global.incendio);
+				break;
+			case Stato.forestafuoco:
+				SetMaterial(1);
+				InstantiateObj(global.incendio);
+				break;
+			case Stato.desertofuoco:
+				SetMaterial(1);
+				InstantiateObj(global.incendio);
+				break;
 			default:
 				break;
 		}
 
 		oldStato = stato;
 	}
-	public void SetStato(Stato s)
+	public void SetStato (Stato s)
 	{
 		SetStato(s, true);
 	}
 
+	public void SetFire ()
+	{
+		if (oldStato == Stato.semi) SetStato(Stato.semifuoco, false);
+		else if (oldStato == Stato.piante) SetStato(Stato.piantefuoco, false);
+		else if (oldStato == Stato.foresta) SetStato(Stato.forestafuoco, false);
+		else SetStato(Stato.desertofuoco, false);
+	}
 	public bool IsSuitableForThunderEvent()
 	{
 		return !Occupied() && (stato == Stato.erba || stato == Stato.semi || stato == Stato.piante || 
@@ -304,8 +317,7 @@ public class Cell : MonoBehaviour {
 
 	public bool Occupied()
 	{
-
-
+		
 		return false;
 	}
 }

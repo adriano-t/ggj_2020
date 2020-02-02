@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -22,7 +22,7 @@ public class Planet : MonoBehaviour
 		{
 			val += cell.GetCo2Contribution();
 		}
-
+		Debug.LogWarning(val);
 		return val;
 	}
 
@@ -34,15 +34,26 @@ public class Planet : MonoBehaviour
 
 		MAIN.Shuffle(cellList, seed);
 
-		while (occupiedCells > 0 && cellList.Count > 0) {
+		while (occupiedCells > 0 && cellList.Count > 0)
+		{
 			Cell c = cellList[0];
 
 			//GameObject tree = Instantiate(global.prefabForest, c.transform.position, Quaternion.identity);
-			c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.semi, 
-				Cell.Stato.deserto, Cell.Stato.deserto, Cell.Stato.fuoco, Cell.Stato.fuoco,
-				Cell.Stato.ghiaccio)
-				);
-			
+
+			if (Random.Range(0, 1) == 0)
+			{
+				c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.semi,
+					Cell.Stato.deserto, Cell.Stato.deserto,
+					Cell.Stato.ghiaccio)
+					);
+			}
+			else
+			{
+				if (Random.value > 0.5f)
+					c.SetFire();
+			}
+
+
 
 			occupiedCells--;
 			cellList.RemoveAt(0);

@@ -59,14 +59,15 @@ public class DisasterManager : MonoBehaviour
 
                 yield return new WaitForSeconds(1);
 
-                if (activeDisasters[i].index == 0) activeDisasters[i].cell.SetStato(Cell.Stato.fuoco, false);
-                else if (activeDisasters[i].index == 1) activeDisasters[i].cell.SetStato(Cell.Stato.ghiaccio, false);
+                if (activeDisasters[i].index == 0) activeDisasters[i].cell.SetFire();
+                else if (activeDisasters[i].index == 1) activeDisasters[i].cell.SetStato(Cell.Stato.ghiaccio, true);
 
                 List<Cell> neigh = activeDisasters[i].cell.GetNeighbors();
 
                 if (neigh.Count > 0)
                 {
                     MAIN.Shuffle(neigh, -1);
+                    Cell n1 = neigh[0];
                     Cell target = null;
 
                     while (target == null && neigh.Count > 0)
@@ -74,6 +75,11 @@ public class DisasterManager : MonoBehaviour
                         target = neigh[0];
                         if (target && !target.IsSuitableForThunderEvent()) target = null;
                         neigh.RemoveAt(0);
+                    }
+
+                    if (!target)
+                    {
+                        target = n1;
                     }
 
                     if(target)
