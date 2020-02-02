@@ -107,7 +107,7 @@ MonoBehaviour:
   - soundName: GameTheme
     clips:
     - {fileID: 8300000, guid: 61aa3ff7e8583394ab891f3344de006a, type: 3}
-    volume: 0.5
+    volume: 0.85
     volumeRandomizer: 0
     pitch: 1
     pitchRandomizer: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   - soundName: cambio arma
     clips:
     - {fileID: 8300000, guid: 40a433b10ca809740b41a41eabc302c6, type: 3}
-    volume: 1
+    volume: 0.3
     volumeRandomizer: 0
     pitch: 1
     pitchRandomizer: 0.35
@@ -183,6 +183,16 @@ MonoBehaviour:
     volumeRandomizer: 0
     pitch: 1
     pitchRandomizer: 0
+    loop: 0
+    sound3D: 1
+  - soundName: pianta seme
+    clips:
+    - {fileID: 8300000, guid: ff9a67d9d9a8a724c8b9d88ea1a4fe0d, type: 3}
+    - {fileID: 8300000, guid: 75d83c3df66fc7d48b29a6f354bf291c, type: 3}
+    volume: 1
+    volumeRandomizer: 0
+    pitch: 1
+    pitchRandomizer: 0.27
     loop: 0
     sound3D: 1
 --- !u!114 &6532689816907681216
