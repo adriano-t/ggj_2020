@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788140864346406500}
   - component: {fileID: 2536482823717388339}
+  - component: {fileID: 6906794733506404544}
   m_Layer: 10
   m_Name: obj_iceberg
   m_TagString: Untagged
@@ -46,6 +47,25 @@ CapsuleCollider:
   m_Height: 0.7273208
   m_Direction: 1
   m_Center: {x: 0.03761846, y: 0.3636604, z: -0.032981157}
+--- !u!95 &6906794733506404544
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4371675997427256439}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d038f991a3a285c4cb1be3cde7aa6a09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4621490120089645725
 GameObject:
   m_ObjectHideFlags: 0
