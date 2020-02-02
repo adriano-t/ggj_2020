@@ -61,6 +61,11 @@ public class DisasterManager : MonoBehaviour
 
                 yield return new WaitForSeconds(1);
 
+                if (activeDisasters[i].disaster == null)
+                {
+                    continue;
+                }
+                
                 if (activeDisasters[i].index == 0) activeDisasters[i].cell.SetFire();
 
                 List<Cell> neigh = activeDisasters[i].cell.GetNeighbors();
@@ -88,12 +93,22 @@ public class DisasterManager : MonoBehaviour
                         activeDisasters[i].CellSet(target);
                         Vector3 startPos = activeDisasters[i].disaster.transform.position;
 
+                        
+
                         for (float j = 0; j < 1; j += Time.deltaTime)
                         {
                             activeDisasters[i].disaster.transform.position = Vector3.Lerp(startPos, target.transform.position, j);
                             MAIN.Orient(activeDisasters[i].disaster.transform);
                             yield return null;
+
+                            if (activeDisasters[i].disaster == null)
+                            {
+                                
+                                continue;
+                            }
                         }
+
+                        
                     }
                 }
 
@@ -106,7 +121,7 @@ public class DisasterManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         List<DisasterStatus> activeDisasters = new List<DisasterStatus>();
 
-        yield return new WaitForSeconds(20.0f);
+        yield return new WaitForSeconds(10.0f);
         while (true)
         {
             Cell cell = MAIN.GetGlobal().FindFreeCell();
@@ -129,7 +144,7 @@ public class DisasterManager : MonoBehaviour
             cell.SetStato(Cell.Stato.ghiaccio);
             Destroy(go);
 
-            yield return new WaitForSeconds(Random.Range(20, 60));
+            yield return new WaitForSeconds(Random.Range(7, 25));
         }
     }
 }

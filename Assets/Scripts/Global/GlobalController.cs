@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 public class GlobalController : MonoBehaviour
 {
@@ -82,11 +83,11 @@ public class GlobalController : MonoBehaviour
 
 			if(MAIN.CO2level >= 100)
 			{
-				//perso
+				SceneManager.LoadScene("GameOver");
 			}
 			else if (MAIN.CO2level <= 0)
 			{
-				//vinto
+				SceneManager.LoadScene("GameWin");
 			}
 
 			healtBar.SetValue(MAIN.CO2level/100f);

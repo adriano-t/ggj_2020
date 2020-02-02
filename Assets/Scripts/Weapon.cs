@@ -66,7 +66,17 @@ public class Weapon : MonoBehaviour
             if (cell)
             { 
                 GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);
-                StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height ), hit.point));
+
+                if (selectedWeapon != 3)
+                {
+                    StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), hit.point));
+                }
+                else
+                {
+                    StartCoroutine(TrajectoryWind(w, 
+                        bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), 
+                        hit.point + MAIN.GetDir(p.GetCenter(), hit.point) * 5));
+                }
             }
         }
     }
@@ -89,8 +99,32 @@ public class Weapon : MonoBehaviour
             MAIN.SoundPlay(MAIN.GetGlobal().sounds, "pianta seme", end);
         }
 
-        GameObject explos = Instantiate(w.explosion, end, Quaternion.identity);
-        MAIN.Orient(explos.transform);
+        if (w.explosion)
+        {
+            GameObject explos = Instantiate(w.explosion, end, Quaternion.identity);
+            MAIN.Orient(explos.transform);
+        }
+        Destroy(bullet.gameObject, 0);
+    }
+
+    IEnumerator TrajectoryWind (StructWeapon w, Transform bullet, Vector3 mid, Vector3 end)
+    {
+        MAIN.SoundPlay(MAIN.GetGlobal().sounds, "sparavento", mid);
+
+        RaycastHit hit;
+        if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 8, 1<<12))
+        {
+            Destroy(hit.collider.gameObject);
+        }
+
+        Vector3 startPos = bullet.position;
+        for (float i = 0; i < 1; i += Time.deltaTime * 2)
+        {
+            var pos = Vector3.Lerp(startPos, mid, i);
+            bullet.position = Vector3.Lerp(pos, end, i);
+            yield return null;
+        }
+
         Destroy(bullet.gameObject, 0);
     }
 }

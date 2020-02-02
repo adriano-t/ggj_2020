@@ -9517,7 +9517,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8823846217048183719}
-  m_Layer: 0
+  - component: {fileID: 3755914693348144550}
+  m_Layer: 12
   m_Name: part_storm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9541,6 +9542,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
+--- !u!136 &3755914693348144550
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8823846217048183716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.19
+  m_Height: 9.74
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.13, z: 0}
 --- !u!1 &8823846217747247088
 GameObject:
   m_ObjectHideFlags: 0

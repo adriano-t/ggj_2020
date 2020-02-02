@@ -13,11 +13,13 @@ public class WeaponHUD
     [SerializeField] public Image[] weaponHUDComponents;
     [SerializeField] public WeaponHUDImage[] weaponImages;
     [SerializeField] public Image[] backgrounds;
+    [SerializeField] public Color[] backcgroundsColors;
 
     public void SetWeapon(int currentSelectedWeapon)
     {
         this.ClearImages();
         this.weaponHUDComponents[currentSelectedWeapon].sprite =  this.weaponImages[currentSelectedWeapon].image;
+        this.backgrounds[currentSelectedWeapon].color = backcgroundsColors[currentSelectedWeapon];
         this.SetWeaponName(currentSelectedWeapon);
     }
 
@@ -26,6 +28,7 @@ public class WeaponHUD
         for (var i = 0; i < weaponHUDComponents.Length; i++)
         {
             this.weaponHUDComponents[i].sprite =  this.weaponImages[i].imageGrayScale;
+            this.backgrounds[i].color = new Color(0.5f, 0.5f, 0.5f);
         }
     }
 
