@@ -6,14 +6,10 @@
     <e p="D:\Users\alex_\Desktop\Programmazione\Unity\GlobalGameJam\ggj_2020" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="HealthBar.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="CameraController.cs" t="Include" />
           <e p="Cell.cs" t="Include" />
-          <e p="CellEvents" t="Include">
-            <e p="CellEvent.cs" t="Include" />
-            <e p="CellEventFire.cs" t="Include" />
-          </e>
-          <e p="Disaster.cs" t="Include" />
           <e p="DisasterManager.cs" t="Include" />
           <e p="Global" t="Include">
             <e p="GlobalController.cs" t="Include" />
@@ -63,6 +59,7 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="TriggerRicarica.cs" t="Include" />
       </e>
       <e p="ggj_2020.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
