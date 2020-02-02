@@ -35,7 +35,11 @@ public class Player : MonoBehaviour
 
         public void Reload()
         {
-            for (int i = 0; i < ammo.Length; i++) ammo[i] = 3;
+            for (int i = 0; i < ammo.Length; i++)
+            {
+                ammo[i] = 3;
+                MAIN.GetGlobal().weaponHud.SetAmmo(i, ammo[i]);
+            }
         }
     }
 

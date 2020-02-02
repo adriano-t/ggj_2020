@@ -14,6 +14,8 @@ public class TriggerRicarica : MonoBehaviour
             if (!entered)
             {
                 MAIN.GetPlayer().ammo.Reload();
+                MAIN.SoundPlay(MAIN.GetGlobal().sounds, "ricarica", transform.position);
+
                 entered = true;
             }
         }

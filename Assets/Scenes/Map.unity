@@ -214,17 +214,17 @@ PrefabInstance:
         type: 3}
       propertyPath: hudCells.Array.data[8]
       value: 
-      objectReference: {fileID: 653183824}
+      objectReference: {fileID: 653183822}
     - target: {fileID: 3888487289364451902, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
       propertyPath: hudCells.Array.data[9]
       value: 
-      objectReference: {fileID: 653183823}
+      objectReference: {fileID: 653183824}
     - target: {fileID: 3888487289364451902, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
       propertyPath: hudCells.Array.data[10]
       value: 
-      objectReference: {fileID: 653183822}
+      objectReference: {fileID: 653183823}
     - target: {fileID: 3888487289364451902, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
       propertyPath: hudCells.Array.data[11]
@@ -488,44 +488,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
-      propertyPath: weaponHud.weaponNames.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponHUDComponents.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backgrounds.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
       propertyPath: healtBar
       value: 
       objectReference: {fileID: 2097794142}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponNames.Array.data[0]
-      value: Pistola ad acqua
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponNames.Array.data[1]
-      value: Lanciafiamme
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponNames.Array.data[2]
-      value: Sparasemi
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponNames.Array.data[3]
-      value: Spazzafoglie
-      objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
       propertyPath: weaponHud.weaponName
