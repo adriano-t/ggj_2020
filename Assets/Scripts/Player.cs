@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     private Vector3 prevPos;
     public float speed;
-    float angle = 90;
+    float angle = 100;
     Vector3 direction;
 	Quaternion rotation = Quaternion.Euler(-90, 0, 0);
     Camera cam;

@@ -97,6 +97,7 @@ public class Cell : MonoBehaviour {
 		obj.transform.position = Vector3.up * 100000;
 		Destroy(obj, 10);
 	}
+
 	private void OnDestroy ()
 	{
 		if (mat) Destroy(mat);
@@ -159,7 +160,7 @@ public class Cell : MonoBehaviour {
 		}
 	}
 	 
-	void InstantiateObj(GameObject obj)
+	public void InstantiateObj(GameObject obj)
 	{
 		GameObject o = Instantiate(obj, transform.position, Quaternion.identity);
 		MAIN.Orient(o.transform);
@@ -201,6 +202,8 @@ public class Cell : MonoBehaviour {
 			case Stato.forestafuoco:
 				break;
 			case Stato.fuoco:
+				SetMaterial(1);
+				InstantiateObj(global.incendio);
 				break;
 			case Stato.deserto:
 				SetMaterial(1);
@@ -216,4 +219,16 @@ public class Cell : MonoBehaviour {
 		oldStato = stato;
 	}
 
+	public bool IsSuitableForThunderEvent()
+	{
+		return !Occupied() && (stato == Stato.erba || stato == Stato.semi || stato == Stato.piante || stato == Stato.foresta ||
+			stato == Stato.deserto);
+	}
+
+	public bool Occupied()
+	{
+
+
+		return false;
+	}
 }

@@ -46,9 +46,12 @@ public class GlobalController : MonoBehaviour
 		activePlanet.gameObject.SetActive(true);
 		activePlanet.GenerateSurface();
 
-		GameObject player = Instantiate(playerObj, activePlanet.GetCenter() + Vector3.up * activePlanet.GetRadius(),
+		GameObject player = Instantiate(playerObj, activePlanet.GetCenter() + Vector3.up * activePlanet.GetRadius() + 
+			Vector3.forward * 4f,
 			Quaternion.identity);
+
 		player.SetActive(true);
+		MAIN.Orient(player.transform);
 	}
 
 	public void LoadNextLevel()
@@ -90,4 +93,21 @@ public class GlobalController : MonoBehaviour
 		return activePlanet;
 	}
 	 
+	public Cell FindFreeCell()
+	{
+		Cell[] cells = activePlanet.cells;
+		Cell c = null;
+		int tries = 100;
+
+		while (c == null)
+		{
+			c = cells[Random.Range(0, cells.Length)];
+			if (!c.IsSuitableForThunderEvent()) c = null;
+
+			tries--;
+			if (tries < 0) break;
+		}
+
+		return c;
+	}
 }
