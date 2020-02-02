@@ -5269,6 +5269,8 @@ MonoBehaviour:
   healtBar: {fileID: 925870644}
   difficulty: 1
   weaponHud:
+    weaponNames: []
+    weaponName: {fileID: 0}
     weaponHUDComponents:
     - {fileID: 1450857347}
     - {fileID: 2140632074}
@@ -5283,6 +5285,7 @@ MonoBehaviour:
       imageGrayScale: {fileID: 21300000, guid: dfddfde0d619dc6458e4df0939dd3554, type: 3}
     - image: {fileID: 21300000, guid: 9c0cd72eb0c50e94287643d88652a45e, type: 3}
       imageGrayScale: {fileID: 21300000, guid: 0bb091c0d33dd714cb424e8424fa0d8f, type: 3}
+    backgrounds: []
   currentLevel: 0
   prefabSemi: {fileID: 3080881178851084849, guid: 38425675b795b314b995b458280e6058,
     type: 3}
@@ -5398,6 +5401,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2240317393705827676, guid: 20d7451ada391ae42bae7abf990e757f,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.12
+      objectReference: {fileID: 0}
     - target: {fileID: 2240317393705827677, guid: 20d7451ada391ae42bae7abf990e757f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5457,6 +5465,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: obj_navicella
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104637766482243049, guid: 20d7451ada391ae42bae7abf990e757f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166579001486911413, guid: 20d7451ada391ae42bae7abf990e757f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764864817978197601, guid: 20d7451ada391ae42bae7abf990e757f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20d7451ada391ae42bae7abf990e757f, type: 3}

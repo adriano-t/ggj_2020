@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class TriggerRicarica : MonoBehaviour
 {
-    void OnTriggerEnter ()
+
+    void Update ()
     {
-        MAIN.GetPlayer().ammo.Reload();
+        if (Vector3.Distance(transform.position, MAIN.GetPlayer().transform.position) < 3.5f)
+        {
+            MAIN.GetPlayer().ammo.Reload();
+        }
     }
 }
