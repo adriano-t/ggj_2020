@@ -50,12 +50,13 @@ public class Cell : MonoBehaviour {
 	}
 
 	GlobalController global;
+	MeshCollider meshc;
 
 
 
 	void Start () {
-		var c = gameObject.AddComponent<MeshCollider>();
-		c.convex = true;
+		meshc = gameObject.AddComponent<MeshCollider>();
+		meshc.convex = true;
 
 		global = MAIN.GetGlobal();
 
@@ -69,16 +70,28 @@ public class Cell : MonoBehaviour {
 
 		StartCoroutine(UpdateSlow());
 
-		Collider[] colliders = Physics.OverlapSphere(transform.position, 5, 1 << 11);
-		foreach (var coll in colliders)
-			if (coll != c)
-				neighbors.Add(coll.GetComponentInParent<Cell>());
+		
 
+	}
+
+	void BuildNeigh()
+	{
+		neighbors.Clear();
+
+		Collider[] colliders = Physics.OverlapSphere(transform.position, 5, 1 << 11);
+
+		foreach (var coll in colliders)
+			if (coll != meshc)
+				neighbors.Add(coll.GetComponentInParent<Cell>());
 	}
 
 
 	IEnumerator UpdateSlow ()
 	{
+		yield return null;
+		yield return null;
+		BuildNeigh();
+
 		while (true)
 		{
 			if (stato == Stato.forestafuoco)
