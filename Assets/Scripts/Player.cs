@@ -134,6 +134,7 @@ public class Player : MonoBehaviour
         {
 	        ammo.ammo[weapon.selectedWeapon]--;
             MAIN.SoundPlay(global.sounds, "arma"+weapon.selectedWeapon, transform.position);
+            MAIN.GetGlobal().weaponHud.SetAmmo(weapon.selectedWeapon, ammo.ammo[weapon.selectedWeapon]);
             weapon.Shoot();
         }
         
