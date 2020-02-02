@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float velocity;
     public float offset;
     public float rotationVelocity;
+    public Transform PERLOD;
 
 	[Header("Prefabs and Objects")]
 	public Animator anim;
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
 			if (Mathf.Abs(horizontalAim) >= 0.05 || Mathf.Abs(verticalAim) >= 0.05) {
 				float angleY = Mathf.Atan2(horizontalAim, verticalAim) * Mathf.Rad2Deg;
 				Quaternion localRotation = transform.GetChild(0).transform.localRotation;
-				transform.GetChild(0).transform.localRotation = Quaternion.Lerp(localRotation, Quaternion.Euler(0, angleY + offset, 0), Time.deltaTime * rotationVelocity * 0.5f);
+				PERLOD.localRotation = Quaternion.Lerp(localRotation, Quaternion.Euler(0, angleY + offset, 0), Time.deltaTime * rotationVelocity * 0.5f);
 			}
 
 			anim.SetFloat("speed", mov ? inputs.sqrMagnitude : 0);
@@ -134,7 +135,7 @@ public class Player : MonoBehaviour
             weapon.Shoot();
         }
         
-        global.weaponHud.SetAmmo(weapon.selectedWeapon, ammo.ammo[weapon.selectedWeapon]);
+        //global.weaponHud.SetAmmo(weapon.selectedWeapon, ammo.ammo[weapon.selectedWeapon]);
 	}
 
     bool Position(float x, float y)

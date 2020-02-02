@@ -34,8 +34,13 @@ public class GlobalController : MonoBehaviour
 		LoadMap();
 	}
 
-	// carica un nuovo livello inizializzandolo
-	public void LoadMap()
+    private void Start()
+    {
+        MAIN.SoundPlay(sounds, "GameTheme", transform.position);
+    }
+
+    // carica un nuovo livello inizializzandolo
+    public void LoadMap()
 	{
 		GameObject[] planets = GameObject.FindGameObjectsWithTag("world");
 
@@ -74,7 +79,7 @@ public class GlobalController : MonoBehaviour
 		{
 			float value = GetActivePlanet().CalculateCo2();
 			MAIN.CO2level += value * 0.1f;
-			Debug.LogError(MAIN.CO2level);
+
 			if(MAIN.CO2level >= 100)
 			{
 
