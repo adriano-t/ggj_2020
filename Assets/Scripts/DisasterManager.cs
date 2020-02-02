@@ -116,7 +116,7 @@ public class DisasterManager : MonoBehaviour
             Vector3 point = ray.GetPoint(MAIN.GetGlobal().GetActivePlanet().GetRadius() * 2) + Random.onUnitSphere * 6;
 
 
-
+            yield return null;
         }
     }
 }

@@ -150,13 +150,13 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 0
     sound3D: 0
-  - soundName: Pause
+  - soundName: cambio arma
     clips:
-    - {fileID: 8300000, guid: b20e2d2debe329e4dba417ee8219db9c, type: 3}
-    volume: 0.5
+    - {fileID: 8300000, guid: 40a433b10ca809740b41a41eabc302c6, type: 3}
+    volume: 1
     volumeRandomizer: 0
     pitch: 1
-    pitchRandomizer: 0
+    pitchRandomizer: 0.35
     loop: 0
     sound3D: 0
 --- !u!114 &6532689816907681216
@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRange: 11
-  prefabsDisaster:
-  - {fileID: 8823846217048183716, guid: 9ef21d135d562c3488880677c0e19423, type: 3}
+  prefabsDisasterGround: []
+  prefabsDisasterSky: []
 --- !u!1 &6532689816922834039
 GameObject:
   m_ObjectHideFlags: 0

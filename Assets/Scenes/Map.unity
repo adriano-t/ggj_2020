@@ -450,6 +450,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: global_controller
       objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: healtBar
+      value: 
+      objectReference: {fileID: 2097794142}
     - target: {fileID: 6532689816907681231, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -538,6 +543,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2097794142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3888487289364451902, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
+    type: 3}
+  m_PrefabInstance: {fileID: 653183820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210a8bb07a38ecc49aafbdaac0efb687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2240317393790917623
 PrefabInstance:
   m_ObjectHideFlags: 0
