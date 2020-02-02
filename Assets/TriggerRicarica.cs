@@ -6,6 +6,6 @@ public class TriggerRicarica : MonoBehaviour
 {
     void OnTriggerEnter ()
     {
-        //MAIN.GetGlobal().
+        MAIN.GetPlayer().ammo.Reload();
     }
 }
