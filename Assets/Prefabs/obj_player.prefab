@@ -20448,7 +20448,7 @@ MonoBehaviour:
   cameraObj: {fileID: 7377377177644096345}
   weapon: {fileID: 7377377176616364296}
   ammo:
-    ammo: 00000000000000000000000000000000
+    ammo: 000000000000000000000000
   speed: 0
 --- !u!1 &7377377177438178919
 GameObject:
@@ -20831,12 +20831,6 @@ MonoBehaviour:
       type: 3}
     explosion: {fileID: 8400737499191291237, guid: 7161b0e20a6f72b4d86fe7db99d8414f,
       type: 3}
-    sounds: []
-  - particles: {fileID: 6730154993569745437}
-    obj: {fileID: 4147756552126135847}
-    bullet: {fileID: 5221053457259561152, guid: 4188350070f1e004a8d57a7c90a35dc7,
-      type: 3}
-    explosion: {fileID: 0}
     sounds: []
   selectedWeapon: 0
   weaponRange: 7

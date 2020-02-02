@@ -238,7 +238,7 @@ PrefabInstance:
     - target: {fileID: 5688764559598267307, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9015266330563812437, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
@@ -509,7 +509,27 @@ PrefabInstance:
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
       propertyPath: weaponHud.backcgroundsColors.Array.size
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.weaponNames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.weaponHUDComponents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.weaponImages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backgrounds.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
