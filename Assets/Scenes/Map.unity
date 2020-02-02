@@ -498,6 +498,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
       propertyPath: healtBar
       value: 
       objectReference: {fileID: 2097794142}
@@ -579,6 +584,86 @@ PrefabInstance:
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
       propertyPath: sounds.Array.data[11].sound3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[0].r
+      value: 0.47267708
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[0].g
+      value: 0.74344486
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[0].b
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[0].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[1].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[1].g
+      value: 0.727323
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[1].b
+      value: 0.6084906
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[1].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[2].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[2].g
+      value: 0.9954955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[2].b
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[2].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[3].r
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[3].g
+      value: 0.70554465
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[3].b
+      value: 0.8061404
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
+        type: 3}
+      propertyPath: weaponHud.backcgroundsColors.Array.data[3].a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681231, guid: ca25800db33cb6f4c813a5058d969211,
