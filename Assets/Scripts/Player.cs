@@ -131,6 +131,7 @@ public class Player : MonoBehaviour
 	public void Shoot() {
         if (ammo.ammo[weapon.selectedWeapon] > 0)
         {
+	        ammo.ammo[weapon.selectedWeapon]--;
             weapon.Shoot();
         }
         
