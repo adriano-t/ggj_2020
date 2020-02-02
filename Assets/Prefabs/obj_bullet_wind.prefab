@@ -72,6 +72,21 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.scalar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2169461741476321970, guid: eb689fff567007d4d8cef2b368d8bbbe,
+        type: 3}
+      propertyPath: SizeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169461741476321970, guid: eb689fff567007d4d8cef2b368d8bbbe,
+        type: 3}
+      propertyPath: SizeModule.curve.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169461741476321970, guid: eb689fff567007d4d8cef2b368d8bbbe,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2985697174739315880, guid: eb689fff567007d4d8cef2b368d8bbbe,
         type: 3}
       propertyPath: m_Name

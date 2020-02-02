@@ -20836,8 +20836,7 @@ MonoBehaviour:
     obj: {fileID: 4147756552126135847}
     bullet: {fileID: 5221053457259561152, guid: 4188350070f1e004a8d57a7c90a35dc7,
       type: 3}
-    explosion: {fileID: 8400737499191291237, guid: 6e1bb26fbc56a9a4eb80e5d4a481e50f,
-      type: 3}
+    explosion: {fileID: 0}
     sounds: []
   selectedWeapon: 0
   weaponRange: 7
