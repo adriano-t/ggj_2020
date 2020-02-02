@@ -106,6 +106,7 @@ public class DisasterManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         List<DisasterStatus> activeDisasters = new List<DisasterStatus>();
 
+        yield return new WaitForSeconds(20.0f);
         while (true)
         {
             Cell cell = MAIN.GetGlobal().FindFreeCell();
@@ -113,10 +114,22 @@ public class DisasterManager : MonoBehaviour
             Vector3 center = MAIN.GetGlobal().GetActivePlanet().GetCenter();
             Ray ray = new Ray(center, MAIN.GetDir(center, cell.transform.position));
 
-            Vector3 point = ray.GetPoint(MAIN.GetGlobal().GetActivePlanet().GetRadius() * 2) + Random.onUnitSphere * 6;
+            Vector3 point = ray.GetPoint(MAIN.GetGlobal().GetActivePlanet().GetRadius() * 10) + Random.onUnitSphere * 6;
+            GameObject go = Instantiate(prefabsDisasterSky[Random.Range(0, prefabsDisasterSky.Length)], point, Quaternion.identity);
+            
+            for (float i = 0; i < 1; i+=Time.deltaTime * 0.5f)
+            {
+                go.transform.position = Vector3.Lerp(point, cell.transform.position, i*i);
+                //todo rotate 
+                yield return null;
+            }
+            MAIN.SoundPlay(MAIN.GetGlobal().sounds, "asteroide", cell.transform.position);
+            //impact
+            //todo particles
+            cell.SetStato(Cell.Stato.ghiaccio);
+            Destroy(go);
 
-
-            yield return null;
+            yield return new WaitForSeconds(Random.Range(20, 60));
         }
     }
 }

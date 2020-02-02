@@ -190,19 +190,18 @@ public class Cell : MonoBehaviour {
 						SetStato(Stato.forestafuoco, false); 
 					}
 					else if (stato == Stato.ghiaccio)
-					{
+					{ 
 						SetStato(Stato.erba);
 					}
 					else if (stato == Stato.erba)
 					{
-						SetStato(Stato.deserto); 
+						SetStato(Stato.desertofuoco); 
 					}
 					else if (stato == Stato.deserto)
 					{
 						SetStato(Stato.desertofuoco); 
 					}
 
-					if (!prefs.Contains(global.incendio)) InstantiateObj(global.incendio);
 					break;
 				}
 

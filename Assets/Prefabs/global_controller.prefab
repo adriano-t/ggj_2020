@@ -56,7 +56,11 @@ MonoBehaviour:
   healtBar: {fileID: 0}
   difficulty: 1
   weaponHud:
-    weaponNames: []
+    weaponNames:
+    - Pistola ad acqua
+    - Lanciafiamme
+    - Sparasemi
+    - Spazzafoglie
     weaponName: {fileID: 0}
     weaponHUDComponents:
     - {fileID: 0}
@@ -72,7 +76,11 @@ MonoBehaviour:
       imageGrayScale: {fileID: 21300000, guid: dfddfde0d619dc6458e4df0939dd3554, type: 3}
     - image: {fileID: 21300000, guid: 9c0cd72eb0c50e94287643d88652a45e, type: 3}
       imageGrayScale: {fileID: 21300000, guid: 0bb091c0d33dd714cb424e8424fa0d8f, type: 3}
-    backgrounds: []
+    backgrounds:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   currentLevel: 0
   prefabSemi: {fileID: 3080881178851084849, guid: 38425675b795b314b995b458280e6058,
     type: 3}
@@ -90,9 +98,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d867f87db7fec244d93ce9fa6b962960, type: 3}
     - {fileID: 8300000, guid: 93eb42c23185b54499809f10ee6953f8, type: 3}
     - {fileID: 8300000, guid: 2f22f36898ecc6247a1800aa215d5558, type: 3}
-    volume: 0.5
+    volume: 0.04
     volumeRandomizer: 0.2
-    pitch: 1
+    pitch: 0.7
     pitchRandomizer: 0.4
     loop: 0
     sound3D: 0
@@ -159,6 +167,24 @@ MonoBehaviour:
     pitchRandomizer: 0.35
     loop: 0
     sound3D: 0
+  - soundName: ricarica
+    clips:
+    - {fileID: 8300000, guid: 6afdda3fea089274286a75c3d2d12dad, type: 3}
+    volume: 1
+    volumeRandomizer: 0
+    pitch: 1
+    pitchRandomizer: 0.35
+    loop: 0
+    sound3D: 0
+  - soundName: asteroide
+    clips:
+    - {fileID: 8300000, guid: 14b3a0ab4632d5741b566a3470a332c2, type: 3}
+    volume: 1
+    volumeRandomizer: 0
+    pitch: 1
+    pitchRandomizer: 0
+    loop: 0
+    sound3D: 1
 --- !u!114 &6532689816907681216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,8 +198,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRange: 11
-  prefabsDisasterGround: []
-  prefabsDisasterSky: []
+  prefabsDisasterGround:
+  - {fileID: 8823846217048183716, guid: 9ef21d135d562c3488880677c0e19423, type: 3}
+  prefabsDisasterSky:
+  - {fileID: 2502012772039086132, guid: 236c658409d415e45a53caffd45fa6ee, type: 3}
 --- !u!1 &6532689816922834039
 GameObject:
   m_ObjectHideFlags: 0
