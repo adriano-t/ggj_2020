@@ -6,7 +6,8 @@ public class DisasterManager : MonoBehaviour
 {
     public float moveRange = 10;
 
-    public GameObject[] prefabsDisaster;
+    public GameObject[] prefabsDisasterGround;
+    public GameObject[] prefabsDisasterSky;
 
 
     public class DisasterStatus
@@ -18,12 +19,13 @@ public class DisasterManager : MonoBehaviour
         public void CellSet (Cell c) { cell = c; }
     }
 
-    void Start()
+    void Start ()
     {
-        StartCoroutine(RoutineDisaster());
+        StartCoroutine(RoutineDisasterGround());
+        StartCoroutine(RoutineDisasterSky());
     }
 
-    IEnumerator RoutineDisaster ()
+    IEnumerator RoutineDisasterGround ()
     {
         yield return new WaitForSeconds(0.1f);
         List<DisasterStatus> activeDisasters = new List<DisasterStatus>();
@@ -31,14 +33,14 @@ public class DisasterManager : MonoBehaviour
         while (true)
         {
             Cell cell = MAIN.GetGlobal().FindFreeCell();
-            
+
             if (cell != null)
             {
                 // chance 
                 if (Random.Range(0, activeDisasters.Count * 2) == 0 && activeDisasters.Count < MAIN.GetGlobal().difficulty + 2)
                 {
-                    int disasterType = Random.Range(0, prefabsDisaster.Length);
-                    GameObject obj = Instantiate(prefabsDisaster[disasterType]);
+                    int disasterType = Random.Range(0, prefabsDisasterGround.Length);
+                    GameObject obj = Instantiate(prefabsDisasterGround[disasterType]);
                     obj.transform.position = cell.transform.position;
                     MAIN.Orient(obj.transform);
                     activeDisasters.Add(new DisasterStatus() { disaster = obj, cell = cell, index = disasterType });
@@ -48,7 +50,7 @@ public class DisasterManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(2, moveRange + 2));
 
 
-            for (int i=0; i<activeDisasters.Count; i++)
+            for (int i = 0; i < activeDisasters.Count; i++)
             {
                 if (activeDisasters[i].disaster == null)
                 {
@@ -60,7 +62,6 @@ public class DisasterManager : MonoBehaviour
                 yield return new WaitForSeconds(1);
 
                 if (activeDisasters[i].index == 0) activeDisasters[i].cell.SetFire();
-                else if (activeDisasters[i].index == 1) activeDisasters[i].cell.SetStato(Cell.Stato.ghiaccio, true);
 
                 List<Cell> neigh = activeDisasters[i].cell.GetNeighbors();
 
@@ -82,7 +83,7 @@ public class DisasterManager : MonoBehaviour
                         target = n1;
                     }
 
-                    if(target)
+                    if (target)
                     {
                         activeDisasters[i].CellSet(target);
                         Vector3 startPos = activeDisasters[i].disaster.transform.position;
@@ -100,6 +101,22 @@ public class DisasterManager : MonoBehaviour
         }
     }
 
-    
+    IEnumerator RoutineDisasterSky ()
+    {
+        yield return new WaitForSeconds(0.1f);
+        List<DisasterStatus> activeDisasters = new List<DisasterStatus>();
 
+        while (true)
+        {
+            Cell cell = MAIN.GetGlobal().FindFreeCell();
+
+            Vector3 center = MAIN.GetGlobal().GetActivePlanet().GetCenter();
+            Ray ray = new Ray(center, MAIN.GetDir(center, cell.transform.position));
+
+            Vector3 point = ray.GetPoint(MAIN.GetGlobal().GetActivePlanet().GetRadius() * 2) + Random.onUnitSphere * 6;
+
+
+
+        }
+    }
 }

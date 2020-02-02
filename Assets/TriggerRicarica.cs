@@ -5,11 +5,21 @@ using UnityEngine;
 public class TriggerRicarica : MonoBehaviour
 {
 
+    bool entered = false;
+
     void Update ()
     {
-        if (Vector3.Distance(transform.position, MAIN.GetPlayer().transform.position) < 3.5f)
+        if (Vector3.Distance(transform.position, MAIN.GetPlayer().transform.position) < 3f)
         {
-            MAIN.GetPlayer().ammo.Reload();
+            if (!entered)
+            {
+                MAIN.GetPlayer().ammo.Reload();
+                entered = true;
+            }
+        }
+        else
+        {
+            entered = false;
         }
     }
 }
