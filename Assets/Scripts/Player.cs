@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	public Animator anim;
     public GameObject cameraObj;
 	public Weapon weapon;
+    public Ammo ammo;
 
 
     private Vector3 prevPos;
@@ -25,6 +26,21 @@ public class Player : MonoBehaviour
 	CameraController camController;
     Planet planet;
 
+
+    [System.Serializable]
+    public class Ammo
+    {
+        public int[] ammo;
+
+        public void Reload()
+        {
+            for (int i = 0; i < ammo.Length; i++) ammo[i] = 3;
+
+        }
+    }
+
+
+
     void Start() 
     {
         speed = 0;
@@ -35,6 +51,8 @@ public class Player : MonoBehaviour
 
 		camController = cam.GetComponent<CameraController>();
         cameraObj.transform.SetParent(null);
+
+        ammo.Reload();
     }
 
     void Update() {
@@ -80,7 +98,7 @@ public class Player : MonoBehaviour
         if (!mov) speed = 0;
         prevPos = transform.position;
         #endregion
-
+        
 
 
         if (!GameObject.FindWithTag("bullet"))
@@ -110,7 +128,12 @@ public class Player : MonoBehaviour
     }
 
 	public void Shoot() {
-		weapon.Shoot();
+        if (ammo.ammo[weapon.selectedWeapon] > 0)
+        {
+            weapon.Shoot();
+        }
+        
+        global.weaponHud.SetAmmo(weapon.selectedWeapon, ammo.ammo[weapon.selectedWeapon]);
 	}
 
     bool Position(float x, float y)

@@ -20446,6 +20446,8 @@ MonoBehaviour:
   anim: {fileID: 6629385726310527850}
   cameraObj: {fileID: 7377377177644096345}
   weapon: {fileID: 7377377176616364296}
+  ammo:
+    ammo: 00000000000000000000000000000000
   speed: 0
 --- !u!1 &7377377177438178919
 GameObject:
