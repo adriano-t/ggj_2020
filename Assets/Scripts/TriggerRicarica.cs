@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerRicarica : MonoBehaviour
 {
 
-    bool entered = false;
+    bool entered = true;
 
     void Update ()
     {

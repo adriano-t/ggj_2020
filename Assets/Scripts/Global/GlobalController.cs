@@ -56,7 +56,7 @@ public class GlobalController : MonoBehaviour
 
 		MAIN.CO2level = 50;
 
-		GameObject player = Instantiate(playerObj, activePlanet.GetCenter() + Vector3.up * activePlanet.GetRadius() + 
+		GameObject player = Instantiate(playerObj, activePlanet.navicella.position + activePlanet.navicella.forward * 3 + 
 			Vector3.forward * 4f,
 			Quaternion.identity);
 

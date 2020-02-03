@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     private Vector3 prevPos;
     public float speed;
-    float angle = 100;
+    float angle = 0;
     Vector3 direction;
 	Quaternion rotation = Quaternion.Euler(-90, 0, 0);
     Camera cam;
@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
     void Start() 
     {
         speed = 0;
+        angle = 180 * Mathf.Deg2Rad;
+
         // la creazione del player avviene nel GlobalController
         cam = cameraObj.GetComponent<Camera>();
         global = MAIN.GetGlobal();
@@ -60,8 +62,8 @@ public class Player : MonoBehaviour
     }
 
     void Update() {
-		#region Movement/Aim
-
+        #region Movement/Aim
+        print(rotation.eulerAngles);
 		Vector2 inputs = new Vector2(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
         bool mov = true;

@@ -12,8 +12,13 @@ public class Planet : MonoBehaviour
 
 	[Header("Planet Settings")]
 	public float radius = 10;
+	public Transform navicella;
 	public Cell[] cells;
 
+
+	private void Awake() {
+		if (seed < 0) seed = Random.Range(100, 9000000);
+	}
 
 	public float CalculateCo2 ()
 	{
@@ -38,7 +43,8 @@ public class Planet : MonoBehaviour
 		{
 			Cell c = cellList[0];
 
-			//GameObject tree = Instantiate(global.prefabForest, c.transform.position, Quaternion.identity);
+			// se c'è roba solid posizionata, skippa
+			if (Physics.OverlapSphere(c.transform.position, 1, 1 << 10).Length > 0) continue;
 
 			if (Random.Range(0, 1) == 0)
 			{

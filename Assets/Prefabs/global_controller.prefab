@@ -60,10 +60,8 @@ MonoBehaviour:
     - Pistola ad acqua
     - Lanciafiamme
     - Sparasemi
-    - Spazzafoglie
     weaponName: {fileID: 0}
     weaponHUDComponents:
-    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -74,13 +72,14 @@ MonoBehaviour:
       imageGrayScale: {fileID: 21300000, guid: 05e21fa4313381645a42ea548fdca16a, type: 3}
     - image: {fileID: 21300000, guid: c1c3d9f891e5f2e49bf0dd8bc9a2981b, type: 3}
       imageGrayScale: {fileID: 21300000, guid: dfddfde0d619dc6458e4df0939dd3554, type: 3}
-    - image: {fileID: 21300000, guid: 9c0cd72eb0c50e94287643d88652a45e, type: 3}
-      imageGrayScale: {fileID: 21300000, guid: 0bb091c0d33dd714cb424e8424fa0d8f, type: 3}
     backgrounds:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
+    backcgroundsColors:
+    - {r: 0.47267708, g: 0.74344486, b: 0.8867924, a: 1}
+    - {r: 1, g: 0.727323, b: 0.6084906, a: 1}
+    - {r: 1, g: 0.9954955, b: 0.75, a: 1}
   currentLevel: 0
   prefabSemi: {fileID: 3080881178851084849, guid: 38425675b795b314b995b458280e6058,
     type: 3}
@@ -111,7 +110,7 @@ MonoBehaviour:
     volumeRandomizer: 0
     pitch: 1
     pitchRandomizer: 0
-    loop: 0
+    loop: 1
     sound3D: 0
   - soundName: Pause
     clips:
@@ -170,7 +169,7 @@ MonoBehaviour:
   - soundName: ricarica
     clips:
     - {fileID: 8300000, guid: 6afdda3fea089274286a75c3d2d12dad, type: 3}
-    volume: 1
+    volume: 0.466
     volumeRandomizer: 0
     pitch: 1
     pitchRandomizer: 0.35
@@ -193,6 +192,15 @@ MonoBehaviour:
     volumeRandomizer: 0
     pitch: 1
     pitchRandomizer: 0.27
+    loop: 0
+    sound3D: 1
+  - soundName: sparavento
+    clips:
+    - {fileID: 8300000, guid: 276f000ade9e5ef4ca238739c5d46cb3, type: 3}
+    volume: 1
+    volumeRandomizer: 0
+    pitch: 1
+    pitchRandomizer: 0.3
     loop: 0
     sound3D: 1
 --- !u!114 &6532689816907681216
