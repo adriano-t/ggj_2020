@@ -1154,7 +1154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619248925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,8 +1168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 300
+  autoGenerate: 0
   density: 0.23
   radius: 10
+  navicella: {fileID: 0}
   cells:
   - {fileID: 1360194546}
   - {fileID: 1697414064}
@@ -1633,7 +1635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &749070339
 Transform:
   m_ObjectHideFlags: 0
@@ -5326,7 +5328,7 @@ RectTransform:
   m_GameObject: {fileID: 1946252500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.57263, y: 0.57263, z: 0.57263}
   m_Children: []
   m_Father: {fileID: 1508074899}
   m_RootOrder: 0
@@ -5864,7 +5866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.78
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0

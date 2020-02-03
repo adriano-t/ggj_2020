@@ -8,6 +8,10 @@ static public class MAIN
     static public GlobalController global = null;
 	static public float CO2level = 50;
 
+	static public float opVolumeMusicMult = 1;
+	static public float opVolumeFXmult = 1;
+
+
 
     static public Player GetPlayer() {
         if (player == null) player = GameObject.FindWithTag("player").GetComponent<Player>();

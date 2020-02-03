@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb59d7aa42f5454c8bcca7b9f367b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generate: 1
   playerObj: {fileID: 7377377177413923707, guid: 2d1d5bfe7332a4f4b8e5c5ebdf613a56,
     type: 3}
   cellMaterials:
@@ -103,6 +104,7 @@ MonoBehaviour:
     pitchRandomizer: 0.4
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: GameTheme
     clips:
     - {fileID: 8300000, guid: 61aa3ff7e8583394ab891f3344de006a, type: 3}
@@ -112,6 +114,7 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 1
     sound3D: 0
+    isMusic: 1
   - soundName: Pause
     clips:
     - {fileID: 8300000, guid: b20e2d2debe329e4dba417ee8219db9c, type: 3}
@@ -121,6 +124,7 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: arma0
     clips:
     - {fileID: 8300000, guid: 803a29efb19234149bf02f6b408dda4a, type: 3}
@@ -130,6 +134,7 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: arma1
     clips:
     - {fileID: 8300000, guid: d141f5803f4be554bbf57caad1b10a6d, type: 3}
@@ -139,6 +144,7 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: arma2
     clips:
     - {fileID: 8300000, guid: 6f9b9e58ba98d244fa5ae7ae2846c791, type: 3}
@@ -148,6 +154,7 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: arma3
     clips:
     - {fileID: 8300000, guid: 276f000ade9e5ef4ca238739c5d46cb3, type: 3}
@@ -157,6 +164,7 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: cambio arma
     clips:
     - {fileID: 8300000, guid: 40a433b10ca809740b41a41eabc302c6, type: 3}
@@ -166,6 +174,7 @@ MonoBehaviour:
     pitchRandomizer: 0.35
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: ricarica
     clips:
     - {fileID: 8300000, guid: 6afdda3fea089274286a75c3d2d12dad, type: 3}
@@ -175,6 +184,7 @@ MonoBehaviour:
     pitchRandomizer: 0.35
     loop: 0
     sound3D: 0
+    isMusic: 0
   - soundName: asteroide
     clips:
     - {fileID: 8300000, guid: 14b3a0ab4632d5741b566a3470a332c2, type: 3}
@@ -184,6 +194,7 @@ MonoBehaviour:
     pitchRandomizer: 0
     loop: 0
     sound3D: 1
+    isMusic: 0
   - soundName: pianta seme
     clips:
     - {fileID: 8300000, guid: ff9a67d9d9a8a724c8b9d88ea1a4fe0d, type: 3}
@@ -194,6 +205,7 @@ MonoBehaviour:
     pitchRandomizer: 0.27
     loop: 0
     sound3D: 1
+    isMusic: 0
   - soundName: sparavento
     clips:
     - {fileID: 8300000, guid: 276f000ade9e5ef4ca238739c5d46cb3, type: 3}
@@ -203,6 +215,7 @@ MonoBehaviour:
     pitchRandomizer: 0.3
     loop: 0
     sound3D: 1
+    isMusic: 0
 --- !u!114 &6532689816907681216
 MonoBehaviour:
   m_ObjectHideFlags: 0

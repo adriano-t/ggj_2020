@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GlobalController : MonoBehaviour {
 	public bool generate = true;
@@ -35,8 +36,23 @@ public class GlobalController : MonoBehaviour {
 		if (generate) LoadMap();
 	}
 
-	private void Start() {
+	void Start() {
+		LoadOptions();
 		MAIN.SoundPlay(sounds, "GameTheme", transform.position);
+	}
+	void LoadOptions() {
+		string path = Application.persistentDataPath + "/settings.txt";
+
+		if (!File.Exists(path)) {
+			FileStream file = File.Create(path);
+			file.Close();
+		}
+
+		string[] data = File.ReadAllLines(path);
+
+		if (data.Length > 0) MAIN.opVolumeMusicMult = float.Parse(data[0]);
+		if (data.Length > 1) MAIN.opVolumeFXmult = float.Parse(data[1]);
+
 	}
 
 	// carica un nuovo livello inizializzandolo
@@ -116,7 +132,6 @@ public class GlobalController : MonoBehaviour {
 
 		return activePlanet;
 	}
-
 	public Cell FindFreeCell() {
 		Cell[] cells = activePlanet.cells;
 		Cell c = null;
@@ -132,4 +147,5 @@ public class GlobalController : MonoBehaviour {
 
 		return c;
 	}
+
 }
