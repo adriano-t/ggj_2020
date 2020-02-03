@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour {
         public GameObject explosion;
         public Sound[] sounds;
     }
+
     public StructWeapon[] weapons;
     public int selectedWeapon = 0;
     public float weaponRange = 2.0f;
