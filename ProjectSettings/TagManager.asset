@@ -9,6 +9,7 @@ TagManager:
   - global
   - camera
   - bullet
+  - timer
   layers:
   - Default
   - TransparentFX

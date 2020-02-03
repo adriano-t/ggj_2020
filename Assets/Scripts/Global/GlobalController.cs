@@ -34,6 +34,8 @@ public class GlobalController : MonoBehaviour {
 
 	void Awake() {
 		if (generate) LoadMap();
+
+		MAIN.timer = 0;
 	}
 
 	void Start() {

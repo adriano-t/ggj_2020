@@ -7,6 +7,7 @@ static public class MAIN
     static public Player player = null;
     static public GlobalController global = null;
 	static public float CO2level = 50;
+	static public float timer = 0;
 
 	static public float opVolumeMusicMult = 1;
 	static public float opVolumeFXmult = 1;
@@ -23,6 +24,19 @@ static public class MAIN
         return global;
     }
 
+	static public string TimerFormat(float time) {
+		int t = Mathf.FloorToInt(time);
+
+		int h, m, s;
+
+		h = Mathf.FloorToInt(t / 3600);
+		t -= h * 3600;
+		m = Mathf.FloorToInt(t / 60);
+		t -= m * 60;
+		s = t;
+
+		return (h > 0 ? (h < 10 ? "0" + h.ToString() : h.ToString()) + ":" : "") + (m < 10 ? "0" + m.ToString() : m.ToString()) + ":" + (s < 10 ? "0" + s.ToString() : s.ToString());
+	}
 
 
 	static public AudioSource SoundPlay(Sound[] sounds, string soundName, Vector3 position) {
@@ -55,6 +69,8 @@ static public class MAIN
 		t.position = position;
 	}
 
+
+	// generics
 	static public void Shuffle<T>(IList<T> list, int seed) {
 		if (seed > 0) Random.InitState(seed);
 
