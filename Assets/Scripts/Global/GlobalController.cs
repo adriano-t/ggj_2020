@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
-using System.IO;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class GlobalController : MonoBehaviour {
 	public bool generate = true;
@@ -42,6 +44,7 @@ public class GlobalController : MonoBehaviour {
 		LoadOptions();
 		MAIN.SoundPlay(sounds, "GameTheme", transform.position);
 	}
+
 	void LoadOptions() {
 		string path = Application.persistentDataPath + "/settings.txt";
 
@@ -83,7 +86,6 @@ public class GlobalController : MonoBehaviour {
 			StopCoroutine(routine);
 		routine = StartCoroutine(RoutineUpdateCo2());
 	}
-
 	public void LoadNextLevel() {
 		StartCoroutine(LoadNextLevelRoutine());
 	}
@@ -104,7 +106,6 @@ public class GlobalController : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 		}
 	}
-
 	IEnumerator LoadNextLevelRoutine() {
 
 		// fade out
@@ -117,6 +118,35 @@ public class GlobalController : MonoBehaviour {
 
 		// fade in
 
+	}
+
+	public void ScoreSend(string name, float score) {
+		StartCoroutine(ScoreSendRoutine(name, score));
+	}
+	IEnumerator ScoreSendRoutine(string name, float score) {
+		WWWForm form = new WWWForm();
+		form.AddField("name", name);
+		form.AddField("score", score.ToString());
+		form.AddField("score", score.ToString());
+
+		UnityWebRequest web = UnityWebRequest.Post("https://atmospgmi.altervista.org/addscore.php", form);
+
+		while (!web.isDone) yield return null;
+		web.Dispose();
+	}
+	public void ScorePrint(Text UIText) {
+		StartCoroutine(ScoreGetTop10Routine(UIText));
+	}
+	IEnumerator ScoreGetTop10Routine(Text UIText) {
+		UnityWebRequest web = new UnityWebRequest("https://atmospgmi.altervista.org/get_top_10.php");
+		while (!web.isDone) yield return null;
+
+		string text = web.downloadHandler.text;
+		Debug.Log(text);
+
+		UIText.text = text;
+
+		web.Dispose();
 	}
 
 	public void DestroyThis(GameObject obj, float delay) {
