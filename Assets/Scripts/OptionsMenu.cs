@@ -14,14 +14,14 @@ public class OptionsMenu : MonoBehaviour
         FX.SetValueWithoutNotify(MAIN.opVolumeFXmult);
     }
 
-    public void SetMusicVolume(float volume)
+    public void SetMusicVolume()
     {
-        MAIN.opVolumeMusicMult = volume;
+        MAIN.opVolumeMusicMult = vol.value;
     }
 
-    public void SetSoundVolume(float volume)
+    public void SetSoundVolume()
     {
-        MAIN.opVolumeFXmult = volume;
+        MAIN.opVolumeFXmult = FX.value;
     }
 
 
