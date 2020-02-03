@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
@@ -125,9 +126,17 @@ public class GlobalController : MonoBehaviour {
 	}
 	IEnumerator ScoreSendRoutine(string name, float score) {
 		WWWForm form = new WWWForm();
+
 		form.AddField("name", name);
 		form.AddField("score", score.ToString());
-		form.AddField("score", score.ToString());
+
+		string date = System.DateTime.Now.Ticks.ToString();
+		form.AddField("date", date);
+
+		SHA256Managed sha256 = new SHA256Managed();
+		byte[] bytes = System.Text.Encoding.UTF8.GetBytes(name + score.ToString() + date);
+		form.AddField("h", System.Text.Encoding.UTF8.GetString(sha256.ComputeHash(bytes)));
+
 
 		UnityWebRequest web = UnityWebRequest.Post("https://atmospgmi.altervista.org/addscore.php", form);
 
