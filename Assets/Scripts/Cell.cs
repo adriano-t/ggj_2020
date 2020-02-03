@@ -27,12 +27,13 @@ public class Cell : MonoBehaviour {
 
 	GlobalController global;
 	MeshCollider meshc;
-
+	MeshRenderer meshRend;
 
 
 	void Start() {
 		meshc = gameObject.AddComponent<MeshCollider>();
 		meshc.convex = true;
+		meshRend = GetComponent<MeshRenderer>();
 
 		global = MAIN.GetGlobal();
 
@@ -71,9 +72,7 @@ public class Cell : MonoBehaviour {
 				if (stato == Stato.semifuoco) SetStato(Stato.deserto);
 			}
 
-			if (stato == Stato.deserto || stato == Stato.desertofuoco) {
-				SetMaterial(1);
-			}
+			
 
 
 			if (stato != oldStato) {
@@ -87,11 +86,15 @@ public class Cell : MonoBehaviour {
 			yield return new WaitForSeconds(0.5f);
 		}
 	}
-
+	void Update() {
+		if (stato == Stato.deserto || stato == Stato.desertofuoco) {
+			SetMaterial(1);
+		}
+	}
 
 	void SetMaterial(int index) {
-		//if (mat) 
-		GetComponent<MeshRenderer>().material = MAIN.GetGlobal().cellMaterials[index];
+		if (!meshRend) meshRend = GetComponent<MeshRenderer>();
+		meshRend.material = MAIN.GetGlobal().cellMaterials[index];
 	}
 	void Vanish(GameObject obj) {
 		obj.transform.position = Vector3.up * 100000;
@@ -183,6 +186,7 @@ public class Cell : MonoBehaviour {
 	public void InstantiateObj(GameObject obj) {
 		GameObject o = Instantiate(obj, transform.position, Quaternion.identity);
 		MAIN.Orient(o.transform);
+		o.transform.SetParent(transform);
 
 		prefs.Add(o);
 	}

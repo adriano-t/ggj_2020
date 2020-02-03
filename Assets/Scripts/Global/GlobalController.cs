@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
 
-public class GlobalController : MonoBehaviour
-{
-	[Header("Global Prefabs")] 
+public class GlobalController : MonoBehaviour {
+	public bool generate = true;
+
+	[Header("Global Prefabs")]
 	public GameObject playerObj;
 	public Material[] cellMaterials;
 	public HealthBar healtBar;
@@ -14,7 +15,7 @@ public class GlobalController : MonoBehaviour
 
 	[FormerlySerializedAs("Weapon HUD")] public WeaponHUD weaponHud;
 	public int currentLevel = 0;
-	
+
 	[Header("Planet Prefabs")]
 	public GameObject prefabSemi;
 	public GameObject prefabPiante;
@@ -22,7 +23,7 @@ public class GlobalController : MonoBehaviour
 	public GameObject incendio;
 	public GameObject iceberg;
 
-	[Header("Sounds")] 
+	[Header("Sounds")]
 	public Sound[] sounds;
 
 
@@ -30,23 +31,19 @@ public class GlobalController : MonoBehaviour
 	Coroutine routine;
 
 
-	void Awake()
-	{
-		LoadMap();
+	void Awake() {
+		if (generate) LoadMap();
 	}
 
-    private void Start()
-    {
-        MAIN.SoundPlay(sounds, "GameTheme", transform.position);
-    }
+	private void Start() {
+		MAIN.SoundPlay(sounds, "GameTheme", transform.position);
+	}
 
-    // carica un nuovo livello inizializzandolo
-    public void LoadMap()
-	{
+	// carica un nuovo livello inizializzandolo
+	public void LoadMap() {
 		GameObject[] planets = GameObject.FindGameObjectsWithTag("world");
 
-		foreach (GameObject o in planets)
-		{
+		foreach (GameObject o in planets) {
 			o.SetActive(false);
 		}
 
@@ -56,47 +53,41 @@ public class GlobalController : MonoBehaviour
 
 		MAIN.CO2level = 50;
 
-		GameObject player = Instantiate(playerObj, activePlanet.navicella.position + activePlanet.navicella.forward * 3 + 
+		GameObject player = Instantiate(playerObj, activePlanet.navicella.position + activePlanet.navicella.forward * 3 +
 			Vector3.forward * 4f,
 			Quaternion.identity);
 
 		player.SetActive(true);
 		MAIN.Orient(player.transform);
 
-		
-		if(routine != null)
+
+		if (routine != null)
 			StopCoroutine(routine);
 		routine = StartCoroutine(RoutineUpdateCo2());
 	}
 
-	public void LoadNextLevel()
-	{
+	public void LoadNextLevel() {
 		StartCoroutine(LoadNextLevelRoutine());
 	}
 
-	IEnumerator RoutineUpdateCo2 ()
-	{
-		while (true)
-		{
+	IEnumerator RoutineUpdateCo2() {
+		while (true) {
 			float value = GetActivePlanet().CalculateCo2();
 			MAIN.CO2level += value * 0.1f;
 
-			if(MAIN.CO2level >= 100)
-			{
+			if (MAIN.CO2level >= 100) {
 				SceneManager.LoadScene("GameOver");
 			}
-			else if (MAIN.CO2level <= 0)
-			{
+			else if (MAIN.CO2level <= 0) {
 				SceneManager.LoadScene("GameWin");
 			}
 
-			healtBar.SetValue(MAIN.CO2level/100f);
+			healtBar.SetValue(MAIN.CO2level / 100f);
 			yield return new WaitForSeconds(1);
 		}
 	}
 
-	IEnumerator LoadNextLevelRoutine()
-	{
+	IEnumerator LoadNextLevelRoutine() {
 
 		// fade out
 
@@ -110,15 +101,12 @@ public class GlobalController : MonoBehaviour
 
 	}
 
-	public void DestroyThis(GameObject obj, float delay)
-	{
+	public void DestroyThis(GameObject obj, float delay) {
 		Destroy(obj, delay);
 	}
 
-	public Planet GetActivePlanet()
-	{
-		if (activePlanet == null)
-		{
+	public Planet GetActivePlanet() {
+		if (activePlanet == null) {
 			var go = GameObject.FindWithTag("world");
 			if (go == null)
 				Debug.LogError("sgocciola");
@@ -128,15 +116,13 @@ public class GlobalController : MonoBehaviour
 
 		return activePlanet;
 	}
-	 
-	public Cell FindFreeCell()
-	{
+
+	public Cell FindFreeCell() {
 		Cell[] cells = activePlanet.cells;
 		Cell c = null;
 		int tries = 100;
 
-		while (c == null)
-		{
+		while (c == null) {
 			c = cells[Random.Range(0, cells.Length)];
 			if (!c.IsSuitableForThunderEvent()) c = null;
 

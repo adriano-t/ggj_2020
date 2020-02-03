@@ -8,6 +8,7 @@ public class Planet : MonoBehaviour
 {
 	[Header("Initial Generation")]
 	public int seed;
+	public bool autoGenerate = false;
 	[Range(0f, 1f)] public float density;
 
 	[Header("Planet Settings")]
@@ -18,6 +19,7 @@ public class Planet : MonoBehaviour
 
 	private void Awake() {
 		if (seed < 0) seed = Random.Range(100, 9000000);
+		if (autoGenerate) GenerateSurface();
 	}
 
 	public float CalculateCo2 ()
@@ -35,6 +37,7 @@ public class Planet : MonoBehaviour
 		int occupiedCells = (int)(cells.Length * density);
 		List<Cell> cellList = new List<Cell>(cells);
 		MAIN.Shuffle(cellList, seed);
+		MAIN.GetGlobal().GetActivePlanet();
 
 		while (occupiedCells > 0 && cellList.Count > 0)
 		{
@@ -48,10 +51,18 @@ public class Planet : MonoBehaviour
 
 			if (Random.Range(0, 1) == 0)
 			{
-				c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.semi,
-					Cell.Stato.deserto, Cell.Stato.deserto,
-					Cell.Stato.ghiaccio)
-					);
+				if (autoGenerate) {
+					c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.foresta,
+						Cell.Stato.foresta, Cell.Stato.deserto,
+						Cell.Stato.ghiaccio)
+						);
+				}
+				else {
+					c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.semi,
+						Cell.Stato.deserto, Cell.Stato.deserto,
+						Cell.Stato.ghiaccio)
+						);
+				}
 			}
 			else
 			{

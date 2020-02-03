@@ -72,13 +72,14 @@ public class Weapon : MonoBehaviour {
             var pos = Vector3.Lerp(startPos, mid, i);
             bullet.position = Vector3.Lerp(pos, end, i);
 
+            yield return null;
+
             if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 8, 1 << 13)) {
                 Vector3 center = MAIN.GetGlobal().GetActivePlanet().GetCenter();
                 target = Physics.RaycastAll(new Ray(center, MAIN.GetDir(center, hit.collider.transform.parent.position)), 1000, 1 << 11)[0].collider.GetComponent<Cell>();
+                if (i < 0.5f) yield return new WaitForSeconds(0.5f);
                 break;
             }
-
-            yield return null;
         }
 
         target.Hit(selectedWeapon);
