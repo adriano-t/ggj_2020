@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Weapon : MonoBehaviour
-{ 
-	[System.Serializable]
-    public struct StructWeapon
-    {
+public class Weapon : MonoBehaviour {
+    [System.Serializable]
+    public struct StructWeapon {
         public ParticleSystem particles;
         public GameObject obj;
         public GameObject bullet;
@@ -17,115 +15,83 @@ public class Weapon : MonoBehaviour
     public StructWeapon[] weapons;
     public int selectedWeapon = 0;
     public float weaponRange = 2.0f;
-    void Start()
-    {
+    void Start() {
         RefreshWeapon();
     }
-    
 
-    private void RefreshWeapon ()
-    {
+
+    private void RefreshWeapon() {
         //deactivate all the weapons except the selected
         for (int i = 0; i < weapons.Length; i++)
-                weapons[i].obj.SetActive(i == selectedWeapon);
-               
+            weapons[i].obj.SetActive(i == selectedWeapon);
+
 
 
         MAIN.GetGlobal().weaponHud.SetWeapon(selectedWeapon);
     }
-    
-    public void GetNextWeapon()
-    { 
+
+    public void GetNextWeapon() {
         selectedWeapon = (selectedWeapon + 1) % weapons.Length;
         RefreshWeapon();
     }
 
-    public void GetPreviousWeapon()
-    {
+    public void GetPreviousWeapon() {
         selectedWeapon--;
-        if(selectedWeapon < 0)
+        if (selectedWeapon < 0)
             selectedWeapon = weapons.Length - 1;
 
         RefreshWeapon();
     }
 
-    public void Shoot ()
-    {
+    public void Shoot() {
         StructWeapon w = weapons[selectedWeapon];
         Planet p = MAIN.GetGlobal().GetActivePlanet();
         w.particles.Play();
 
         Ray rayf = new Ray(transform.position, transform.forward);
-        Ray rayn = new Ray(p.GetCenter(), rayf.GetPoint(weaponRange + MAIN.GetPlayer().speed/Time.deltaTime*0.5f));
-        
+        Ray rayn = new Ray(p.GetCenter(), rayf.GetPoint(weaponRange + MAIN.GetPlayer().speed / Time.deltaTime * 0.5f));
+
         RaycastHit[] hits = Physics.RaycastAll(rayn);
-        foreach (RaycastHit hit in hits)
-        {
+        foreach (RaycastHit hit in hits) {
             Cell cell = hit.collider.transform.GetComponent<Cell>();
 
-            if (cell)
-            { 
+            if (cell) {
                 GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);
 
-                if (selectedWeapon != 3)
-                {
-                    StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), hit.point));
-                }
-                else
-                {
-                    StartCoroutine(TrajectoryWind(w, 
-                        bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), 
-                        hit.point + MAIN.GetDir(p.GetCenter(), hit.point) * 5));
-                }
+                StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), hit.point));
             }
         }
     }
 
-    IEnumerator Trajectory(StructWeapon w, Cell target, Transform bullet, Vector3 mid, Vector3 end)
-    { 
+    IEnumerator Trajectory(StructWeapon w, Cell target, Transform bullet, Vector3 mid, Vector3 end) {
 
         Vector3 startPos = bullet.position;
-        for (float i = 0; i < 1; i+= Time.deltaTime * 2) 
-        {
+        RaycastHit hit;
+
+        for (float i = 0; i < 1; i += Time.deltaTime * 2) {
             var pos = Vector3.Lerp(startPos, mid, i);
-            bullet.position = Vector3.Lerp(pos, end, i); 
+            bullet.position = Vector3.Lerp(pos, end, i);
+
+            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 8, 1 << 13)) {
+                Vector3 center = MAIN.GetGlobal().GetActivePlanet().GetCenter();
+                target = Physics.RaycastAll(new Ray(center, MAIN.GetDir(center, hit.collider.transform.parent.position)), 1000, 1 << 11)[0].collider.GetComponent<Cell>();
+                break;
+            }
+
             yield return null;
         }
 
         target.Hit(selectedWeapon);
 
-        if (selectedWeapon == 2)
-        {
+        if (selectedWeapon == 2) {
             MAIN.SoundPlay(MAIN.GetGlobal().sounds, "pianta seme", end);
         }
 
-        if (w.explosion)
-        {
+        if (w.explosion) {
             GameObject explos = Instantiate(w.explosion, end, Quaternion.identity);
             MAIN.Orient(explos.transform);
         }
         Destroy(bullet.gameObject, 0);
     }
 
-    IEnumerator TrajectoryWind (StructWeapon w, Transform bullet, Vector3 mid, Vector3 end)
-    {
-        MAIN.SoundPlay(MAIN.GetGlobal().sounds, "sparavento", mid);
-
-        RaycastHit hit;
-        if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 8, 1<<12))
-        {
-            Destroy(hit.collider.gameObject);
-        }
-
-        Vector3 startPos = bullet.position;
-        for (float i = 0; i < 1; i += Time.deltaTime * 2)
-        {
-            var pos = Vector3.Lerp(startPos, mid, i);
-            bullet.position = Vector3.Lerp(pos, end, i);
-            yield return null;
-        }
-
-        Destroy(bullet.gameObject, 0);
-    }
 }
-

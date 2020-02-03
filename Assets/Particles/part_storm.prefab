@@ -9518,7 +9518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8823846217048183719}
   - component: {fileID: 3755914693348144550}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: part_storm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

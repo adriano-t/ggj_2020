@@ -108,13 +108,13 @@ public class Player : MonoBehaviour
 
         if (!GameObject.FindWithTag("bullet"))
         {
-            if (Input.GetButtonDown("ChangeWeaponLeft") || Input.GetAxis("Mouse ScrollWheel") > 0)
+            if (Input.GetButtonDown("ChangeWeaponLeft") || Input.GetAxis("Mouse ScrollWheel") < 0)
             {
                 weapon.GetPreviousWeapon();
                 MAIN.SoundPlay(global.sounds, "cambio arma", transform.position);
             }
 
-            if (Input.GetButtonDown("ChangeWeaponRight") || Input.GetAxis("Mouse ScrollWheel") < 0)
+            if (Input.GetButtonDown("ChangeWeaponRight") || Input.GetAxis("Mouse ScrollWheel") > 0)
             {
                 weapon.GetNextWeapon();
                 MAIN.SoundPlay(global.sounds, "cambio arma", transform.position);

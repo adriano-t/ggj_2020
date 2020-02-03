@@ -20442,7 +20442,7 @@ MonoBehaviour:
   height: 3
   velocity: 40
   offset: -90
-  rotationVelocity: 180
+  rotationVelocity: 140
   PERLOD: {fileID: 3641807842389532176}
   anim: {fileID: 6629385726310527850}
   cameraObj: {fileID: 7377377177644096345}
