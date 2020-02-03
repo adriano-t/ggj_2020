@@ -32,11 +32,8 @@ public class Planet : MonoBehaviour
 	}
 
 	public void GenerateSurface() {
-		GlobalController global = MAIN.GetGlobal();
-
 		int occupiedCells = (int)(cells.Length * density);
 		List<Cell> cellList = new List<Cell>(cells);
-
 		MAIN.Shuffle(cellList, seed);
 
 		while (occupiedCells > 0 && cellList.Count > 0)
@@ -44,7 +41,10 @@ public class Planet : MonoBehaviour
 			Cell c = cellList[0];
 
 			// se c'è roba solid posizionata, skippa
-			if (Physics.OverlapSphere(c.transform.position, 1, 1 << 10).Length > 0) continue;
+			if (Physics.OverlapSphere(c.transform.position, 1, 1 << 10).Length > 0) {
+				cellList.RemoveAt(0);
+				continue;
+			}
 
 			if (Random.Range(0, 1) == 0)
 			{

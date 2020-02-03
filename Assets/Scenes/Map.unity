@@ -151,18 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &594376999 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2083591610320277937, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
-    type: 3}
-  m_PrefabInstance: {fileID: 653183820}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &653183820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -523,41 +511,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
-      propertyPath: sounds.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].clips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponNames.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponHUDComponents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.weaponImages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backgrounds.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
       propertyPath: healtBar
       value: 
       objectReference: {fileID: 2097794142}
@@ -583,11 +536,6 @@ PrefabInstance:
       objectReference: {fileID: 295419727}
     - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
-      propertyPath: weaponHud.weaponHUDComponents.Array.data[3]
-      value: 
-      objectReference: {fileID: 1357757994}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
       propertyPath: weaponHud.backgrounds.Array.data[0]
       value: 
       objectReference: {fileID: 1274662211}
@@ -601,126 +549,6 @@ PrefabInstance:
       propertyPath: weaponHud.backgrounds.Array.data[2]
       value: 
       objectReference: {fileID: 549281597}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backgrounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 594376999}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].soundName
-      value: sparavento
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].clips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 276f000ade9e5ef4ca238739c5d46cb3, type: 3}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].clips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 75d83c3df66fc7d48b29a6f354bf291c, type: 3}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].pitchRandomizer
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: sounds.Array.data[11].sound3D
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[0].r
-      value: 0.47267708
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[0].g
-      value: 0.74344486
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[0].b
-      value: 0.8867924
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[0].a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[1].r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[1].g
-      value: 0.727323
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[1].b
-      value: 0.6084906
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[1].a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[2].r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[2].g
-      value: 0.9954955
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[2].b
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[2].a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[3].r
-      value: 0.990566
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[3].g
-      value: 0.70554465
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[3].b
-      value: 0.8061404
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532689816907681230, guid: ca25800db33cb6f4c813a5058d969211,
-        type: 3}
-      propertyPath: weaponHud.backcgroundsColors.Array.data[3].a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6532689816907681231, guid: ca25800db33cb6f4c813a5058d969211,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -793,18 +621,6 @@ MonoBehaviour:
 --- !u!114 &1274662211 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6683079413705266392, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
-    type: 3}
-  m_PrefabInstance: {fileID: 653183820}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1357757994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9015266330041175332, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
     type: 3}
   m_PrefabInstance: {fileID: 653183820}
   m_PrefabAsset: {fileID: 0}
@@ -962,14 +778,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820535991884824600, guid: 3301ad6e6f73d4e4e90df6eab3529180,
         type: 3}
-      propertyPath: navicella
-      value: 
-      objectReference: {fileID: 5662963817351118048}
+      propertyPath: seed
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3301ad6e6f73d4e4e90df6eab3529180, type: 3}
---- !u!4 &5662963817351118048 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5662963817532217973, guid: 3301ad6e6f73d4e4e90df6eab3529180,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662963817351118047}
-  m_PrefabAsset: {fileID: 0}

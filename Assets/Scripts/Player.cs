@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     void Update() {
         #region Movement/Aim
-        print(rotation.eulerAngles);
+
 		Vector2 inputs = new Vector2(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
         bool mov = true;
@@ -106,16 +106,15 @@ public class Player : MonoBehaviour
         #endregion
         
 
-
         if (!GameObject.FindWithTag("bullet"))
         {
-            if (Input.GetButtonDown("ChangeWeaponLeft"))
+            if (Input.GetButtonDown("ChangeWeaponLeft") || Input.GetAxis("Mouse ScrollWheel") > 0)
             {
                 weapon.GetPreviousWeapon();
                 MAIN.SoundPlay(global.sounds, "cambio arma", transform.position);
             }
 
-            if (Input.GetButtonDown("ChangeWeaponRight"))
+            if (Input.GetButtonDown("ChangeWeaponRight") || Input.GetAxis("Mouse ScrollWheel") < 0)
             {
                 weapon.GetNextWeapon();
                 MAIN.SoundPlay(global.sounds, "cambio arma", transform.position);
