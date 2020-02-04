@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
         direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
         bool mov = true;
 
-        if (camController.cameraBehind) {
+        if (!MAIN.opDualStick) {
 
             Rotation(inputs.x * rotationVelocity);
             mov = Position(0, (Mathf.Abs(inputs.y) < 0.1f ? 0 : Mathf.Sign(inputs.y)) * velocity * Time.deltaTime);

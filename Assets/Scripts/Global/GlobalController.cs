@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class GlobalController : MonoBehaviour {
 	public bool generate = true;
@@ -14,6 +16,7 @@ public class GlobalController : MonoBehaviour {
 	[Header("Global Prefabs")]
 	public GameObject playerObj;
 	public Material[] cellMaterials;
+	public TextMeshProUGUI[] highscores;
 	public HealthBar healtBar;
 	public float difficulty = 1;
 
@@ -45,6 +48,9 @@ public class GlobalController : MonoBehaviour {
 		LoadOptions();
 		string name = SceneManager.GetActiveScene().name;
 
+		if (highscores.Length == 2) {
+			ScorePrint(highscores[0], highscores[1]);
+		}
 
 		if (name == "Map")
 			MAIN.SoundPlay(sounds, "GameTheme", transform.position);
@@ -64,6 +70,7 @@ public class GlobalController : MonoBehaviour {
 
 		if (data.Length > 0) MAIN.opVolumeMusicMult = float.Parse(data[0]);
 		if (data.Length > 1) MAIN.opVolumeFXmult = float.Parse(data[1]);
+		if (data.Length > 2) MAIN.opDualStick = bool.Parse(data[2]);
 
 	}
 
@@ -148,14 +155,15 @@ public class GlobalController : MonoBehaviour {
 		//Debug.LogError(web.downloadHandler.text);
 		web.Dispose();
 	}
-	public void ScorePrint(Text UITextNames, Text UITextScores) {
+	public void ScorePrint(TextMeshProUGUI UITextNames, TextMeshProUGUI UITextScores) {
 		StartCoroutine(ScoreGetTop10Routine(UITextNames, UITextScores));
 	}
-	IEnumerator ScoreGetTop10Routine(Text UITextNames, Text UITextScores) {
-		UnityWebRequest web = new UnityWebRequest("https://atmospgmi.altervista.org/get_top_10.php");
+	IEnumerator ScoreGetTop10Routine(TextMeshProUGUI UITextNames, TextMeshProUGUI UITextScores) {
+		UnityWebRequest web = UnityWebRequest.Get("https://atmospgmi.altervista.org/get_top_10.php");
 		yield return web.SendWebRequest();
 
 		string text = web.downloadHandler.text, names = "", scores = "";
+		Debug.LogError(text);
 
 		/*
 		Formato dell output:
@@ -171,7 +179,7 @@ public class GlobalController : MonoBehaviour {
 
 
 		if (UITextNames) UITextNames.text = names.TrimEnd('\n');
-		if (UITextScores) UITextNames.text = scores.TrimEnd('\n');
+		if (UITextScores) UITextScores.text = scores.TrimEnd('\n');
 
 		web.Dispose();
 	}

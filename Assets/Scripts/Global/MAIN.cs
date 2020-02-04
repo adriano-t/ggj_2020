@@ -13,6 +13,7 @@ static public class MAIN
 
 	static public float opVolumeMusicMult = 1;
 	static public float opVolumeFXmult = 1;
+	static public bool opDualStick = false;
 
 
 

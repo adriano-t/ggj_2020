@@ -83,15 +83,15 @@ public class MainMenu : MonoBehaviour
      
     public void ToggleSticks()
     {
-        //todo
-        bool dualsticks = toggleSticks.isOn;
+        MAIN.opDualStick = toggleSticks.isOn;
     }
 
     public void Save ()
     {
         string[] data = {
             MAIN.opVolumeMusicMult.ToString(),
-            MAIN.opVolumeFXmult.ToString()
+            MAIN.opVolumeFXmult.ToString(),
+            MAIN.opDualStick.ToString()
         };
 
         File.WriteAllLines(Application.persistentDataPath + "/settings.txt", data);
