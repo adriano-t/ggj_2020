@@ -43,7 +43,6 @@ public class GlobalController : MonoBehaviour {
 
 	void Start() {
 		LoadOptions();
-		MAIN.SoundPlay(sounds, "GameTheme", transform.position);
 	}
 
 	void LoadOptions() {
