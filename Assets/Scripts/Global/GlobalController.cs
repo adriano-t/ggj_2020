@@ -163,7 +163,7 @@ public class GlobalController : MonoBehaviour {
 		yield return web.SendWebRequest();
 
 		string text = web.downloadHandler.text, names = "", scores = "";
-		Debug.LogError(text);
+		Debug.Log(text);
 
 		/*
 		Formato dell output:

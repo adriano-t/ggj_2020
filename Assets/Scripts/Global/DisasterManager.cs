@@ -131,14 +131,22 @@ public class DisasterManager : MonoBehaviour
 
             Vector3 point = ray.GetPoint(MAIN.GetGlobal().GetActivePlanet().GetRadius() * 10) + Random.onUnitSphere * 6;
             GameObject go = Instantiate(prefabsDisasterSky[Random.Range(0, prefabsDisasterSky.Length)], point, Quaternion.identity);
-            
+
+            bool sound = false;
+
             for (float i = 0; i < 1; i+=Time.deltaTime * 0.25f)
             {
                 go.transform.position = Vector3.Lerp(point, cell.transform.position, i*i);
+
+                if (!sound && i > 0.8f) {
+                    MAIN.SoundPlay(MAIN.GetGlobal().sounds, "asteroide", cell.transform.position);
+                    sound = true;
+                }
+
                 //todo rotate 
                 yield return null;
             }
-            MAIN.SoundPlay(MAIN.GetGlobal().sounds, "asteroide", cell.transform.position);
+            
             //impact
             //todo particles
             cell.SetStato(Cell.Stato.ghiaccio);
