@@ -41,7 +41,6 @@ public class MainMenu : MonoBehaviour
     }
     private void Start ()
     {
-        MAIN.SoundPlay(MAIN.GetGlobal().sounds, "MenuTheme", transform.position);
         vol.SetValueWithoutNotify(MAIN.opVolumeMusicMult);
         FX.SetValueWithoutNotify(MAIN.opVolumeFXmult);
 
@@ -61,7 +60,6 @@ public class MainMenu : MonoBehaviour
     #region Main
     public void PlayGame()
     {
-        MAIN.SoundPlay(MAIN.GetGlobal().sounds, "GameTheme", transform.position); 
         SceneManager.LoadScene("Map");
     }
 

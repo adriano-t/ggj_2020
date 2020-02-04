@@ -43,6 +43,13 @@ public class GlobalController : MonoBehaviour {
 
 	void Start() {
 		LoadOptions();
+		string name = SceneManager.GetActiveScene().name;
+
+
+		if (name == "Map")
+			MAIN.SoundPlay(sounds, "GameTheme", transform.position);
+		else if (name == "Menu")
+			MAIN.SoundPlay(sounds, "MenuTheme", transform.position);
 	}
 
 	void LoadOptions() {
