@@ -229,6 +229,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3719016673950010104, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3888487289364451902, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
       propertyPath: hudCells.Array.size
@@ -854,7 +859,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f5fccf330ff7ea44db69349e4b1c1027, type: 3}
+    m_Font: {fileID: 12800000, guid: 190a108928f8d9944816d7f50d3e3ed5, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
