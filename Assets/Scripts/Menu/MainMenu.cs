@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
     public struct GameWin {
         public TMP_InputField input;
         public Text scoreUI;
+        public GameObject mainCanvas;
     }
      
     
@@ -128,6 +129,7 @@ public class MainMenu : MonoBehaviour
             MAIN.GetGlobal().ScoreSend(winSettings.input.text, Mathf.Floor(MAIN.timer));
 
         sent = true;
+        winSettings.mainCanvas.SetActive(false);
     }
 
     #endregion

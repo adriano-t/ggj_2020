@@ -53,6 +53,9 @@ public class Weapon : MonoBehaviour {
         Ray rayn = new Ray(p.GetCenter(), rayf.GetPoint(weaponRange + MAIN.GetPlayer().speed / Time.deltaTime * 0.5f));
 
         RaycastHit[] hits = Physics.RaycastAll(rayn);
+        Vector3 point = rayn.GetPoint(p.GetRadius());
+        Cell hitCell = null;
+
         foreach (RaycastHit hit in hits) {
             Transform t = hit.collider.transform;
 
@@ -64,9 +67,14 @@ public class Weapon : MonoBehaviour {
                 cell = t.GetComponent<Cell>();
             }
 
-            GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);
-            StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), hit.point));
+            point = hit.point;
+            hitCell = cell;
+
+            if (cell) break;
         }
+
+        GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);
+        StartCoroutine(Trajectory(w, hitCell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), point));
     }
 
     IEnumerator Trajectory(StructWeapon w, Cell target, Transform bullet, Vector3 mid, Vector3 end) {
@@ -87,7 +95,7 @@ public class Weapon : MonoBehaviour {
             }
         }
 
-        if (target) target.Hit(selectedWeapon);
+        if (target && !target.Occupied()) target.Hit(selectedWeapon);
 
         if (selectedWeapon == 2) {
             MAIN.SoundPlay(MAIN.GetGlobal().sounds, "pianta seme", end);

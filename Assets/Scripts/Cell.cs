@@ -90,6 +90,9 @@ public class Cell : MonoBehaviour {
 		if (stato == Stato.deserto || stato == Stato.desertofuoco) {
 			SetMaterial(1);
 		}
+		else if (stato == Stato.erba) {
+			SetMaterial(0);
+		}
 	}
 
 	void SetMaterial(int index) {
@@ -231,14 +234,17 @@ public class Cell : MonoBehaviour {
 				break;
 			case Stato.semifuoco:
 				SetMaterial(1);
+				InstantiateObj(global.prefabSemi);
 				InstantiateObj(global.incendio);
 				break;
 			case Stato.piantefuoco:
 				SetMaterial(1);
+				InstantiateObj(global.prefabPiante);
 				InstantiateObj(global.incendio);
 				break;
 			case Stato.forestafuoco:
 				SetMaterial(1);
+				InstantiateObj(global.prefabForest);
 				InstantiateObj(global.incendio);
 				break;
 			
@@ -252,10 +258,10 @@ public class Cell : MonoBehaviour {
 		SetStato(s, true);
 	}
 	public void SetFire() {
-		if (oldStato == Stato.semi) SetStato(Stato.semifuoco, false);
-		else if (oldStato == Stato.piante) SetStato(Stato.piantefuoco, false);
-		else if (oldStato == Stato.foresta) SetStato(Stato.forestafuoco, false);
-		else SetStato(Stato.desertofuoco, false);
+		if (oldStato == Stato.semi) SetStato(Stato.semifuoco);
+		else if (oldStato == Stato.piante) SetStato(Stato.piantefuoco);
+		else if (oldStato == Stato.foresta) SetStato(Stato.forestafuoco);
+		else SetStato(Stato.desertofuoco);
 	}
 
 	public bool IsSuitableForThunderEvent() {

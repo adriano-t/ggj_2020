@@ -166,7 +166,7 @@ public class GlobalController : MonoBehaviour {
 		UnityWebRequest web = UnityWebRequest.Post("https://atmospgmi.altervista.org/addscore.php", form);
 		yield return web.SendWebRequest();
 
-		//Debug.LogError(web.downloadHandler.text);
+		Debug.LogError(web.downloadHandler.text);
 		web.Dispose();
 
 		SceneManager.LoadScene("Menu");

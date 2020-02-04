@@ -3445,6 +3445,9 @@ MonoBehaviour:
   vol: {fileID: 0}
   FX: {fileID: 0}
   toggleSticks: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  continueButton: {fileID: 0}
   winSettings:
     input: {fileID: 775951907}
     scoreUI: {fileID: 1884035998}
+    mainCanvas: {fileID: 2131488939}
