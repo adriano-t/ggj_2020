@@ -86,8 +86,7 @@ public class Player : MonoBehaviour {
 
             if (Mathf.Abs(horizontalAim) >= 0.05 || Mathf.Abs(verticalAim) >= 0.05) {
                 float angleY = Mathf.Atan2(horizontalAim, verticalAim) * Mathf.Rad2Deg;
-                Quaternion localRotation = transform.GetChild(0).transform.localRotation;
-                PERLOD.localRotation = Quaternion.Lerp(localRotation, Quaternion.Euler(0, angleY + offset, 0), Time.deltaTime * rotationVelocity * 0.5f);
+                PERLOD.localRotation = Quaternion.Slerp(PERLOD.localRotation, Quaternion.Euler(0, angleY + offset, 0), Time.deltaTime * rotationVelocity * 0.5f);
             }
 
             anim.SetFloat("speed", mov ? inputs.sqrMagnitude : 0);

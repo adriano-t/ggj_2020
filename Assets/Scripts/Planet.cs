@@ -50,7 +50,7 @@ public class Planet : MonoBehaviour
 				continue;
 			}
 
-			if (Random.Range(0, 2) == 0) {
+			if (Random.Range(0, 3) != 0 || autoGenerate) {
 				if (autoGenerate) {
 					c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.foresta,
 						Cell.Stato.foresta, Cell.Stato.deserto,
