@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
 
         ammo.Reload();
 
-        global.ScoreSend("maonna", 1000);
+        //global.ScoreSend("maonna", 1000);
     }
 
     void Update() {

@@ -136,11 +136,11 @@ public class GlobalController : MonoBehaviour {
 		SHA256Managed sha256 = new SHA256Managed();
 		byte[] bytes = System.Text.Encoding.UTF8.GetBytes(name + score.ToString() + date);
 		form.AddField("h", System.Text.Encoding.UTF8.GetString(sha256.ComputeHash(bytes)));
-
-
+		
 		UnityWebRequest web = UnityWebRequest.Post("https://atmospgmi.altervista.org/addscore.php", form);
+		yield return web.SendWebRequest();
 
-		while (!web.isDone) yield return null;
+		Debug.LogError(web.downloadHandler.text);
 		web.Dispose();
 	}
 	public void ScorePrint(Text UIText) {
@@ -148,7 +148,7 @@ public class GlobalController : MonoBehaviour {
 	}
 	IEnumerator ScoreGetTop10Routine(Text UIText) {
 		UnityWebRequest web = new UnityWebRequest("https://atmospgmi.altervista.org/get_top_10.php");
-		while (!web.isDone) yield return null;
+		yield return web.SendWebRequest();
 
 		string text = web.downloadHandler.text;
 		Debug.Log(text);
