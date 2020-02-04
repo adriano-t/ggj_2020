@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
     #region Main
     public void PlayGame()
     {
+        MAIN.timer = 0;
         SceneManager.LoadScene("Map");
     }
 
