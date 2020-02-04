@@ -54,7 +54,16 @@ public class Weapon : MonoBehaviour {
 
         RaycastHit[] hits = Physics.RaycastAll(rayn);
         foreach (RaycastHit hit in hits) {
-            Cell cell = hit.collider.transform.GetComponent<Cell>();
+            Transform t = hit.collider.transform;
+
+            Cell cell = t.GetComponent<Cell>();
+
+            while (!cell) {
+                t = t.parent;
+                if (t == null) break;
+                cell = t.GetComponent<Cell>();
+            }
+
 
             if (cell) {
                 GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);

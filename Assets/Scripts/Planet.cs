@@ -39,8 +39,9 @@ public class Planet : MonoBehaviour
 		MAIN.Shuffle(cellList, seed);
 		MAIN.GetGlobal().GetActivePlanet();
 
-		while (occupiedCells > 0 && cellList.Count > 0)
-		{
+		Random.InitState(seed);
+
+		while (occupiedCells > 0 && cellList.Count > 0) {
 			Cell c = cellList[0];
 
 			// se c'è roba solid posizionata, skippa
@@ -49,8 +50,7 @@ public class Planet : MonoBehaviour
 				continue;
 			}
 
-			if (Random.Range(0, 1) == 0)
-			{
+			if (Random.Range(0, 2) == 0) {
 				if (autoGenerate) {
 					c.SetStato(MAIN.Choose(Cell.Stato.piante, Cell.Stato.foresta,
 						Cell.Stato.foresta, Cell.Stato.deserto,
@@ -64,8 +64,7 @@ public class Planet : MonoBehaviour
 						);
 				}
 			}
-			else
-			{
+			else {
 				if (Random.value > 0.5f)
 					c.SetFire();
 			}
