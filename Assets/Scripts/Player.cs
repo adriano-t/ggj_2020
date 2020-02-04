@@ -114,10 +114,6 @@ public class Player : MonoBehaviour {
             anim.SetBool("shoot", true);
         }
 
-        if (Input.GetButtonUp("Pause")) {
-            MAIN.SoundPlay(global.sounds, "Pause", transform.position);
-        }
-
 
     }
 

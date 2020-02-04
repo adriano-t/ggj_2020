@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
 {
     public Slider vol, FX;
     public Toggle toggleSticks;
+    public GameObject pauseMenu;
 
     public GameWin winSettings;
 
@@ -39,6 +40,20 @@ public class MainMenu : MonoBehaviour
             winSettings.scoreUI.text = "<color=\"red\">" + Mathf.Floor(MAIN.timer).ToString() + "</color> seconds";
  
         StartCoroutine(RoutineWait());
+        if (pauseMenu) StartCoroutine(PauseController());
+    }
+
+    IEnumerator PauseController() {
+        while (true) {
+            if (Input.GetButtonUp("Pause")) {
+                if (!pauseMenu.activeInHierarchy) MAIN.SoundPlay(MAIN.GetGlobal().sounds, "Pause", transform.position);
+                pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            }
+
+            Time.timeScale = (pauseMenu.activeInHierarchy ? 0 : 1);
+
+            yield return null;
+        }
     }
 
     IEnumerator RoutineWait ()
@@ -51,6 +66,7 @@ public class MainMenu : MonoBehaviour
         }
          
     }
+
     #region Main
     public void PlayGame()
     {

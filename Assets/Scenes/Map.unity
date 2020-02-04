@@ -289,6 +289,11 @@ PrefabInstance:
       propertyPath: hudCells.Array.data[11]
       value: 
       objectReference: {fileID: 653183821}
+    - target: {fileID: 5059720983804409177, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 653183834}
     - target: {fileID: 5555906796018802277, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
       propertyPath: m_RootOrder
@@ -338,6 +343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.81457
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151992109158970979, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9015266330563812437, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
         type: 3}
@@ -597,6 +607,12 @@ RectTransform:
 --- !u!1 &653183833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8006206569378417191, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
+    type: 3}
+  m_PrefabInstance: {fileID: 653183820}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &653183834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8151992109158970979, guid: a3ccf0b0e2df2fb42b7ebe3d1f642e06,
     type: 3}
   m_PrefabInstance: {fileID: 653183820}
   m_PrefabAsset: {fileID: 0}
