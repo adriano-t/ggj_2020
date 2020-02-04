@@ -54,8 +54,6 @@ public class Player : MonoBehaviour {
         cameraObj.transform.SetParent(null);
 
         ammo.Reload();
-
-        //global.ScoreSend("maonna", 1000);
     }
 
     void Update() {

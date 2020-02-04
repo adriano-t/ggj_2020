@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 
 static public class MAIN
@@ -69,6 +71,18 @@ static public class MAIN
 		t.position = position;
 	}
 
+
+
+	static public string HmacSha256Digest(string message, string secret) {
+		ASCIIEncoding encoding = new ASCIIEncoding();
+		byte[] keyBytes = encoding.GetBytes(secret);
+		byte[] messageBytes = encoding.GetBytes(message);
+		HMACSHA256 cryptographer = new HMACSHA256(keyBytes);
+
+		byte[] bytes = cryptographer.ComputeHash(messageBytes);
+
+		return System.BitConverter.ToString(bytes).Replace("-", "").ToLower();
+	}
 
 	// generics
 	static public void Shuffle<T>(IList<T> list, int seed) {
