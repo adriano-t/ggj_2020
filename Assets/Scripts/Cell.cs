@@ -263,8 +263,7 @@ public class Cell : MonoBehaviour {
 			stato == Stato.foresta || stato == Stato.deserto);
 	}
 	public bool Occupied() {
-
-		return false;
+		return Physics.OverlapSphere(transform.position, 1, 1 << 10).Length > 0;
 	}
 	public float GetCo2Contribution() {
 		switch (stato) {

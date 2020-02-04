@@ -64,19 +64,14 @@ public class Weapon : MonoBehaviour {
                 cell = t.GetComponent<Cell>();
             }
 
-
-            if (cell) {
-                GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);
-
-                StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), hit.point));
-            }
+            GameObject bullet = Instantiate(w.bullet, w.obj.transform.GetChild(0).position, transform.rotation);
+            StartCoroutine(Trajectory(w, cell, bullet.transform, rayn.GetPoint(p.GetRadius() + MAIN.GetPlayer().height), hit.point));
         }
     }
 
     IEnumerator Trajectory(StructWeapon w, Cell target, Transform bullet, Vector3 mid, Vector3 end) {
 
         Vector3 startPos = bullet.position;
-        RaycastHit hit;
 
         for (float i = 0; i < 1; i += Time.deltaTime * 2) {
             var pos = Vector3.Lerp(startPos, mid, i);
@@ -84,7 +79,7 @@ public class Weapon : MonoBehaviour {
 
             yield return null;
 
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 8, 1 << 13)) {
+            if (Physics.Raycast(new Ray(transform.position, transform.forward), out RaycastHit hit, 8, 1 << 13)) {
                 Vector3 center = MAIN.GetGlobal().GetActivePlanet().GetCenter();
                 target = Physics.RaycastAll(new Ray(center, MAIN.GetDir(center, hit.collider.transform.parent.position)), 1000, 1 << 11)[0].collider.GetComponent<Cell>();
                 yield return new WaitForSeconds((1 - i) * 0.5f);
@@ -92,7 +87,7 @@ public class Weapon : MonoBehaviour {
             }
         }
 
-        target.Hit(selectedWeapon);
+        if (target) target.Hit(selectedWeapon);
 
         if (selectedWeapon == 2) {
             MAIN.SoundPlay(MAIN.GetGlobal().sounds, "pianta seme", end);

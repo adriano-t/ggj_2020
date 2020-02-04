@@ -45,7 +45,7 @@ public class Planet : MonoBehaviour
 			Cell c = cellList[0];
 
 			// se c'è roba solid posizionata, skippa
-			if (Physics.OverlapSphere(c.transform.position, 1, 1 << 10).Length > 0) {
+			if (c.Occupied()) {
 				cellList.RemoveAt(0);
 				continue;
 			}
