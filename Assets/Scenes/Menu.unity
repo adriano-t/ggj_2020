@@ -6027,6 +6027,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: main_menu
       objectReference: {fileID: 0}
+    - target: {fileID: 2483883114840624735, guid: e2fe6db3e592b7d4caa7f73379e1e6bc,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483883114840624735, guid: e2fe6db3e592b7d4caa7f73379e1e6bc,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2690442328890308642, guid: e2fe6db3e592b7d4caa7f73379e1e6bc,
         type: 3}
       propertyPath: m_Material
