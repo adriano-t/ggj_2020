@@ -41,19 +41,22 @@ public class MainMenu : MonoBehaviour
     }
     private void Start ()
     {
-        vol.SetValueWithoutNotify(MAIN.opVolumeMusicMult);
-        FX.SetValueWithoutNotify(MAIN.opVolumeFXmult);
+        if(vol)
+            vol.SetValueWithoutNotify(MAIN.opVolumeMusicMult);
+
+        if (FX)
+            FX.SetValueWithoutNotify(MAIN.opVolumeFXmult);
 
         StartCoroutine(RoutineWait());
-        
     }
+
     IEnumerator RoutineWait ()
     {
         yield return new WaitForSeconds(0.1f);
         if (!ControllerConnected())
         {
             EventSystem.current.SetSelectedGameObject(null);
-            Debug.LogError("asd");
+            Debug.Log("No controller found");
         }
          
     }
@@ -96,5 +99,18 @@ public class MainMenu : MonoBehaviour
 
         File.WriteAllLines(Application.persistentDataPath + "/settings.txt", data);
     }
+    #endregion
+
+    #region GameOver
+
+    public void GoToMainMenu ()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+    public void SendHighScore ()
+    {
+        //
+    }
+
     #endregion
 }

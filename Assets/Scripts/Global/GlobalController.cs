@@ -43,13 +43,26 @@ public class GlobalController : MonoBehaviour {
 
 	void Start() {
 		LoadOptions();
-		string name = SceneManager.GetActiveScene().name;
+		string sceneName = SceneManager.GetActiveScene().name;
 
-
-		if (name == "Map")
-			MAIN.SoundPlay(sounds, "GameTheme", transform.position);
-		else if (name == "Menu")
-			MAIN.SoundPlay(sounds, "MenuTheme", transform.position);
+		string songName;
+		switch (sceneName)
+		{
+			case "Menu":
+				songName = "MenuTheme";
+				break;
+			case "Map":
+				songName = "GameTheme";
+				break;
+			case "GameOver":
+				songName = "GameOver";
+				break; 
+			default:
+				songName = "MenuTheme";
+				break;
+		} 
+		MAIN.SoundPlay(sounds, songName, transform.position); 
+		
 	}
 
 	void LoadOptions() {
