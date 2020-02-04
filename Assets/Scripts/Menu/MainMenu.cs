@@ -5,11 +5,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     public Slider vol, FX;
     public Toggle toggleSticks;
+
+    public GameWin winSettings;
+
+    bool sent = false;
+
+
+    [System.Serializable]
+    public struct GameWin {
+        public TMP_InputField input;
+        public Text scoreUI;
+    }
      
     
     private void Start ()
@@ -22,6 +34,9 @@ public class MainMenu : MonoBehaviour
 
         if(toggleSticks)
             toggleSticks.SetIsOnWithoutNotify(MAIN.opDualStick);
+
+        if (winSettings.scoreUI)
+            winSettings.scoreUI.text = "<color=\"red\">" + Mathf.Floor(MAIN.timer).ToString() + "</color> seconds";
  
         StartCoroutine(RoutineWait());
     }
@@ -86,7 +101,12 @@ public class MainMenu : MonoBehaviour
 
     public void SendHighScore ()
     {
-        //
+        if (sent || !winSettings.input) return;
+
+        if (winSettings.input.text != "")
+            MAIN.GetGlobal().ScoreSend(winSettings.input.text, Mathf.Floor(MAIN.timer));
+
+        sent = true;
     }
 
     #endregion

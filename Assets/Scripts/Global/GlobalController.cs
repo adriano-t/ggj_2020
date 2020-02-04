@@ -170,6 +170,8 @@ public class GlobalController : MonoBehaviour {
 
 		//Debug.LogError(web.downloadHandler.text);
 		web.Dispose();
+
+		SceneManager.LoadScene("Menu");
 	}
 	public void ScorePrint(TextMeshProUGUI UITextNames, TextMeshProUGUI UITextScores) {
 		StartCoroutine(ScoreGetTop10Routine(UITextNames, UITextScores));
@@ -216,6 +218,8 @@ public class GlobalController : MonoBehaviour {
 		return activePlanet;
 	}
 	public Cell FindFreeCell() {
+		if (activePlanet == null) return null;
+
 		Cell[] cells = activePlanet.cells;
 		Cell c = null;
 		int tries = 100;
