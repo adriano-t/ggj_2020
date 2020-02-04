@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2825,7 +2825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2902,7 +2902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5555906796018802277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4061,6 +4061,8 @@ MonoBehaviour:
   vol: {fileID: 0}
   FX: {fileID: 0}
   toggleSticks: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  continueButton: {fileID: 676399780789375792}
   winSettings:
     input: {fileID: 0}
     scoreUI: {fileID: 0}

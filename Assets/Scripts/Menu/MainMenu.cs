@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public Slider vol, FX;
     public Toggle toggleSticks;
     public GameObject pauseMenu;
+    public Button continueButton;
 
     public GameWin winSettings;
 
@@ -46,8 +47,11 @@ public class MainMenu : MonoBehaviour
     IEnumerator PauseController() {
         while (true) {
             if (Input.GetButtonUp("Pause")) {
-                if (!pauseMenu.activeInHierarchy) MAIN.SoundPlay(MAIN.GetGlobal().sounds, "Pause", transform.position);
+                if (!pauseMenu.activeInHierarchy) 
+                    MAIN.SoundPlay(MAIN.GetGlobal().sounds, "Pause", transform.position);
                 pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+                if(continueButton && MAIN.ControllerConnected())
+                    continueButton.Select();
             }
 
             Time.timeScale = (pauseMenu.activeInHierarchy ? 0 : 1);

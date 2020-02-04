@@ -179,7 +179,7 @@ public class GlobalController : MonoBehaviour {
 		yield return web.SendWebRequest();
 
 		string text = web.downloadHandler.text, names = "", scores = "";
-		Debug.Log(text);
+		Debug.Log("classifica" + text);
 
 		/*
 		Formato dell output:
@@ -187,16 +187,18 @@ public class GlobalController : MonoBehaviour {
 		*/
 
 		string[] tab = text.Split('§');
-
-		for (int i = 0; i < tab.Length; i += 2) {
-			names += tab[i] + "\n";
-			scores += tab[i + 1] + "\n";
+		if (tab.Length > 1)
+		{
+			for (int i = 0; i < tab.Length; i += 2)
+			{
+				names += tab[i] + "\n";
+				scores += tab[i + 1] + "\n";
+			}
 		}
-
 
 		if (UITextNames) UITextNames.text = names.TrimEnd('\n');
 		if (UITextScores) UITextScores.text = scores.TrimEnd('\n');
-
+		
 		web.Dispose();
 	}
 
