@@ -63,23 +63,21 @@ public class Player : MonoBehaviour {
         direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
         bool mov = true;
 
-        if (camController.cameraBehind) {
+        if (!MAIN.opDualStick || !MAIN.ControllerConnected()) {
 
             Rotation(inputs.x * rotationVelocity);
             mov = Position(0, (Mathf.Abs(inputs.y) < 0.1f ? 0 : Mathf.Sign(inputs.y)) * velocity * Time.deltaTime);
 
             transform.position = rotation * Vector3.forward * planet.GetRadius();
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
 
             anim.SetFloat("speed", mov ? Mathf.Abs(inputs.y) : 0);
         }
         else {
-
-
             mov = Position(inputs.x * velocity * Time.deltaTime, inputs.y * velocity * Time.deltaTime);
 
             transform.position = rotation * Vector3.forward * planet.GetRadius();
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation * Quaternion.LookRotation(direction, Vector3.forward), Time.deltaTime * rotationVelocity);
 
             float horizontalAim = Input.GetAxisRaw("HorizontalAim");
             float verticalAim = Input.GetAxisRaw("VerticalAim");

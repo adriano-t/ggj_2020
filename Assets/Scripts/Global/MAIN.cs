@@ -13,6 +13,7 @@ static public class MAIN
 
 	static public float opVolumeMusicMult = 1;
 	static public float opVolumeFXmult = 1;
+	static public bool opDualStick = false;
 
 
 
@@ -101,5 +102,28 @@ static public class MAIN
 		return a[Random.Range(0, a.Length)];
 	}
 
+	static public bool ControllerConnected() {
+		string[] temp = Input.GetJoystickNames();
+		//Check whether array contains anything
+		if (temp.Length > 0) {
+			//Iterate over every element
+			for (int i = 0; i < temp.Length; ++i) {
+				//Check if the string is empty or not
+				if (!string.IsNullOrEmpty(temp[i])) {
+					//Not empty, controller temp[i] is connected
+					return true;
+					//Debug.Log("Controller " + i + " is connected using: " + temp[i]);
+				}
+				else {
+					//If it is empty, controller i is disconnected
+					//where i indicates the controller number
+					//Debug.Log("Controller: " + i + " is disconnected.");
+					return false;
+
+				}
+			}
+		}
+		return false;
+	}
 
 }

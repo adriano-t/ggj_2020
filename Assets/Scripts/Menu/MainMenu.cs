@@ -11,49 +11,25 @@ public class MainMenu : MonoBehaviour
     public Slider vol, FX;
     public Toggle toggleSticks;
      
-    private bool ControllerConnected ()
-    {
-        string[] temp = Input.GetJoystickNames();
-        //Check whether array contains anything
-        if (temp.Length > 0)
-        {
-            //Iterate over every element
-            for (int i = 0; i < temp.Length; ++i)
-            {
-                //Check if the string is empty or not
-                if (!string.IsNullOrEmpty(temp[i]))
-                {
-                    //Not empty, controller temp[i] is connected
-                    return true;
-                    //Debug.Log("Controller " + i + " is connected using: " + temp[i]);
-                }
-                else
-                {
-                    //If it is empty, controller i is disconnected
-                    //where i indicates the controller number
-                    //Debug.Log("Controller: " + i + " is disconnected.");
-                    return false;
-
-                }
-            }
-        }
-        return false;
-    }
+    
     private void Start ()
-    {
+    { 
         if(vol)
             vol.SetValueWithoutNotify(MAIN.opVolumeMusicMult);
 
         if (FX)
             FX.SetValueWithoutNotify(MAIN.opVolumeFXmult);
 
+        if(toggleSticks)
+            toggleSticks.SetIsOnWithoutNotify(MAIN.opDualStick);
+ 
         StartCoroutine(RoutineWait());
     }
 
     IEnumerator RoutineWait ()
     {
         yield return new WaitForSeconds(0.1f);
-        if (!ControllerConnected())
+        if (!MAIN.ControllerConnected())
         {
             EventSystem.current.SetSelectedGameObject(null);
             Debug.Log("No controller found");
@@ -86,15 +62,15 @@ public class MainMenu : MonoBehaviour
      
     public void ToggleSticks()
     {
-        //todo
-        bool dualsticks = toggleSticks.isOn;
+        MAIN.opDualStick = toggleSticks.isOn;
     }
 
     public void Save ()
     {
         string[] data = {
             MAIN.opVolumeMusicMult.ToString(),
-            MAIN.opVolumeFXmult.ToString()
+            MAIN.opVolumeFXmult.ToString(),
+            MAIN.opDualStick.ToString()
         };
 
         File.WriteAllLines(Application.persistentDataPath + "/settings.txt", data);
@@ -107,6 +83,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
     public void SendHighScore ()
     {
         //
